@@ -1,10 +1,26 @@
-# PassFortGenerator
-Un simple generador de contraseñas seguras en Python que permite a los usuarios personalizar la longitud y los caracteres de la contraseña. Este proyecto utiliza la librería random para generar contraseñas aleatorias y la librería secrets para asegurar una mayor aleatoriedad y seguridad.
+This project is written in Spanish as part of my personal learning. Feel free to reach out if you want an English version.
 
-## Características:
-- Personalización de la longitud de la contraseña.
-- Opción para incluir mayúsculas, números y símbolos.
-- Generación de contraseñas seguras para mejorar la seguridad en línea.
-  
-## Tecnologías utilizadas: 
-- Python, string, random, secrets.
+🛡️ #PassFortGenerator
+PassFortGenerator es una herramienta sencilla pero poderosa escrita en Python para generar contraseñas seguras y personalizadas. Está pensada como parte de mi proceso de aprendizaje en desarrollo web y ciberseguridad.
+
+Tiene como objetivo generar contraseñas seguras lo más personalizadas posible y al mismo tiempo garantizando la seguridad por medio de una serie de patrones como la longitudad, diferentes caractéres, mayusculas y digitos.
+
+🚀 ##Características
+✅ Personalización de la longitud de la contraseña.
+✅ Posibilidad de incluir mayúsculas, números y símbolos.
+✅ Generación de contraseñas seguras para proteger cuentas en línea.
+✅ Código ligero y fácil de usar.
+✅ Validador inidicativo del nivel de seguridad
+
+
+🛠️ ##Tecnologías utilizadas
+🔹 Python
+🔹 secrets (para una aleatoriedad criptográficamente segura)
+🔹 string (para manejar diferentes conjuntos de caracteres)
+
+📌 ##Cómo usarlo
+1️⃣ Clona este repositorio o descarga el archivo.
+
+📜 ##Licencia
+Este proyecto es de código abierto y está disponible bajo la licencia MIT.
+
