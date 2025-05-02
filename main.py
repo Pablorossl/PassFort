@@ -24,7 +24,6 @@ def generacion_de_contrasena():
 print("¡Bienvenido a PassFort!")
 time.sleep(2)
 
-
 continuar = True
 while continuar:
     corta = True
@@ -60,7 +59,6 @@ while continuar:
         break
 
     repetir = input("Desea generar una nueva contraseña? (s/n):")
-
     if repetir == "s":
         time.sleep(2)
         contrasena = generador.generar_contrasena(longitud, mayusculas, numeros, simbolos)

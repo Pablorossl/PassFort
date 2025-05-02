@@ -2,13 +2,11 @@
                                         #Importación de módulos
 import string
 
-
                                         #Validador de contraseñas
 def validar_contrasena(contrasena):
     tiene_mayuscula = False
     tiene_digitos = False
     tiene_simbolos = False
-
 
                         #Recorrer la contraseña para las condiciones
 
@@ -21,8 +19,6 @@ def validar_contrasena(contrasena):
 
         if letra in string.punctuation:
             tiene_simbolos = True
-
-    
 
                 #Condiciones para la información de la seguridad de contraseña
                 
@@ -45,7 +41,6 @@ def validar_contrasena(contrasena):
             return "Nivel de seguridad: Medio"
         else:
             return "Nivel de seguridad: Medio-Bajo"
-        
         
     if len(contrasena) >= 7:
         if tiene_mayuscula and tiene_digitos and tiene_simbolos:
