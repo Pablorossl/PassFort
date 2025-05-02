@@ -21,6 +21,7 @@ def generar_contrasena(longitud, usar_mayusculas, usar_numeros, usar_simbolos):
     return contrasena
 
 
+
                                     #Futuras mejoras
 #*1 Añadir palabra elegida por el usuario y mejora alrededor usando enumerate
 #For index ,letra in enumerate(contrasena):
