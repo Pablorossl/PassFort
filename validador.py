@@ -59,6 +59,8 @@ def validar_contrasena(contrasena):
     
     else:
         return "Menos de 7 digitos es una contraseña corta en terminos de seguridad"
+    
+
 
         
 
