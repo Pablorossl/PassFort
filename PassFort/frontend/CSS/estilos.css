@@ -6,6 +6,8 @@ body {
     padding: 0;
 }
 .container {
+    position: relative;
+    top: 20px;
     background: #121629;
     max-width: 400px;
     margin: 60px auto;
@@ -36,6 +38,18 @@ button {
     width: 100%;
     padding: 0.7em;
     background: #eebbc3;
+    color: #232946;
+    border: none;
+    border-radius: 6px;
+    font-size: 1em;
+    cursor: pointer;
+    margin-top: 1em;
+}
+
+button:hover {
+    width: 100%;
+    padding: 0.7em;
+    background: #eb8b9a;
     color: #232946;
     border: none;
     border-radius: 6px;
