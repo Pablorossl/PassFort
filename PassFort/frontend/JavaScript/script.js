@@ -1,7 +1,6 @@
 document.getElementById('passwordForm').onsubmit = async function(e) {
             e.preventDefault();
-            // Aquí deberías hacer una petición AJAX a tu backend en Python
-            // Por ahora, solo muestra un ejemplo
+            // Crear una petición AJAX a tu backend en Python
             const longitud = document.getElementById('length').value;
             const mayusculas = document.getElementById('mayusculas').checked;
             const numeros = document.getElementById('numeros').checked;
