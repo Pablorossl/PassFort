@@ -8,5 +8,5 @@ document.getElementById('passwordForm').onsubmit = async function(e) {
             const simbolos = document.getElementById('simbolos').checked;
             // Simulación de resultado
             document.getElementById('resultado').innerText = "Contraseña generada: ********";
-            document.getElementById('seguridad').innerText = "Nivel de seguridad: (aquí irá la validación)";
+            document.getElementById('seguridad').innerText = "Nivel de seguridad:";
             }
