@@ -37,7 +37,7 @@ input[type="number"] {
 button {
     width: 100%;
     padding: 0.7em;
-    background: #eebbc3;
+    background: #c2c6e6;
     color: #232946;
     border: none;
     border-radius: 6px;
@@ -49,7 +49,7 @@ button {
 button:hover {
     width: 100%;
     padding: 0.7em;
-    background: #eb8b9a;
+    background: #d6dce6;
     color: #232946;
     border: none;
     border-radius: 6px;
@@ -62,3 +62,26 @@ button:hover {
     text-align: center;
     font-size: 1.1em;
 }
+
+
+input[type="range"] {
+    width: 100%;
+    padding: 0.5em;
+    border-radius: 6px;  
+}
+
+label[for="length"] {
+    display: flex;
+    align-items: center;
+    gap: 0.5em;
+}
+#lengthValue {
+    background: #eebbc3;
+    color: #232946;
+    padding: 0.2em 0.7em;
+    border-radius: 6px;
+    font-weight: bold;
+    font-size: 1em;
+}
+
+
