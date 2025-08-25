@@ -2,18 +2,18 @@
 
 > Este proyecto está documentado en español como parte de mi aprendizaje. Si necesitas la versión en inglés, ¡contáctame!
 
-PassFortGenerator es una herramienta sencilla y potente escrita en Python para generar y validar contraseñas seguras y personalizadas. El proyecto incluye tanto la lógica backend como una interfaz web (frontend), aunque **el frontend aún no está conectado al backend**.
+PassFortGenerator is a simple yet powerful tool written in Python to generate and validate secure, customizable passwords. The project includes both backend logic and a web interface (frontend), although **the frontend is not yet connected to the backend.**
 
 ---
 
-## 🚀 Características
+## 🚀 Features
 
-- Personalización de la longitud de la contraseña.
-- Opciones para incluir mayúsculas, números y símbolos.
-- Generación de contraseñas seguras para proteger tus cuentas.
-- Validador que indica el nivel de seguridad de la contraseña.
-- Código ligero y fácil de usar.
-- **Frontend web listo (HTML/CSS), pendiente de integración con el backend.**
+- Customizable password length.
+- Options to include uppercase letters, numbers, and symbols.
+- Generates secure passwords to protect your accounts.
+- Validator indicating the security level of the password.
+- Lightweight and easy-to-use code.
+- **Web frontend ready (HTML/CSS), pending integration with the backend**
 
 ---
 
