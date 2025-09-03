@@ -15,7 +15,7 @@ PassFortGenerator is a simple yet powerful tool written in Python to generate an
 
 ---
 
-## 🛠️ Tecnologías utilizadas
+## 🛠️ Technologies used
 
 - Python 3
 - secrets (aleatoriedad criptográficamente segura)
