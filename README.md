@@ -39,7 +39,7 @@ Run the password generator from the terminal:
 
 ```bash
 python main.py
-
+```
 
 ## 🌐 Web Frontend
 
