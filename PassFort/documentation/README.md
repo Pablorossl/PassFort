@@ -1,7 +1,5 @@
 # 🛡️ PassFortGenerator
 
-> Este proyecto está documentado en español como parte de mi aprendizaje. Si necesitas la versión en inglés, ¡contáctame!
-
 PassFortGenerator is a simple yet powerful tool written in Python to generate and validate secure, customizable passwords. The project includes both backend logic and a web interface (frontend), although **the frontend is not yet connected to the backend.**
 
 ---
@@ -26,56 +24,44 @@ PassFortGenerator is a simple yet powerful tool written in Python to generate an
 
 ---
 
-## 📦 Instalación
+## 📦 Installation
 
-1. Clona este repositorio o descarga los archivos:
+1. Clone this repository or download the files:
 
    ```bash
-   git clone https://github.com/tuusuario/passfortgenerator.git
+   git clone https://github.com/yourusername/passfortgenerator.git
    cd passfortgenerator/PassFort
-   ```
 
-2. (Opcional) Instala dependencias si vas a trabajar con el backend web:
 
-   ```bash
-   pip install flask
-   ```
+## ▶️ Usage
 
----
-
-## ▶️ Cómo usarlo
-
-Ejecuta el generador desde la terminal:
+Run the password generator from the terminal:
 
 ```bash
 python main.py
-```
 
-Sigue las instrucciones en pantalla para personalizar tu contraseña y validar su seguridad.
 
----
+## 🌐 Web Frontend
 
-## 🌐 Frontend Web
-
-El proyecto incluye archivos de frontend (`index.html` y `styles.css`) en la carpeta correspondiente.  
-**Actualmente el frontend no está conectado al backend Python.**  
-Puedes abrir el archivo HTML en tu navegador para ver la interfaz, pero la generación y validación de contraseñas no funcionarán hasta que se integre con el backend (Flask o Django).
+The project includes frontend files (`index.html` and `styles.css`) in the corresponding folder.  
+**Currently, the frontend is not connected to the Python backend.**  
+You can open the HTML file in your browser to view the interface, but password generation and validation will not work until it is integrated with the backend (Flask or Django).
 
 ---
 
-## 📜 Licencia
+## 📜 License
 
-Este proyecto es de código abierto y está disponible bajo la licencia MIT.
-
----
-
-## 🤝 Contribuciones
-
-¡Las contribuciones son bienvenidas! Si tienes sugerencias o mejoras, abre un issue o envía un pull request.
+This project is open source and available under the MIT License.
 
 ---
 
-## 📧 Contacto
+## 🤝 Contributing
 
-¿Quieres la documentación en inglés o tienes dudas?  
-Escríbeme a prosaleslzn@gmail.com mailto:prosaleslzn@gmail.com
+Contributions are welcome! If you have suggestions or improvements, please open an issue or submit a pull request.
+
+---
+
+## 📧 Contact
+
+Would you like the documentation in English or do you have any questions?  
+Feel free to reach out at **prosaleslzn@gmail.com** or **rosales.pablo1@icloud.com**.
