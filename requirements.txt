@@ -1,0 +1,7 @@
+# Only include external packages, not Python standard modules
+
+# If you use Flask for the web backend (optional)
+flask
+
+# If you use pytest for unit testing (optional)
+pytest
