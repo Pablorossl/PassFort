@@ -10,14 +10,14 @@
     <div class="container">
         <h1>PassFort</h1>
         <form id="passwordForm">
-            <label for="length"> Longitud: <span id="lengthValue">12</span></label>
+            <label for="length"> Length: <span id="lengthValue">12</span></label>
             <input type="range" id="length" name="length" min="5" max="30" value="12" required>
             <div class="options">
-                <label><input type="checkbox" id="mayusculas" checked> Mayúsculas</label>
-                <label><input type="checkbox" id="numeros" checked> Números</label>
-                <label><input type="checkbox" id="simbolos" checked> Símbolos</label>
+                <label><input type="checkbox" id="mayusculas" checked> Uppercase</label>
+                <label><input type="checkbox" id="numeros" checked> Numbers</label>
+                <label><input type="checkbox" id="simbolos" checked> Symbols</label>
             </div>
-            <button type="submit">Generar Contraseña</button>
+            <button type="submit">Create password</button>
         </form>
         <div id="resultado"></div>
         <div id="seguridad"></div>
