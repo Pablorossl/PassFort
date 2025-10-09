@@ -1,7 +1,7 @@
 
                                              #Módulos
-import generador
-import validador as validador
+import generador 
+import validador
 import time
 
 

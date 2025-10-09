@@ -1,5 +1,5 @@
 import unittest
-from passfort import generador
+from app import generador
 
 class TestGenerador(unittest.TestCase):
     def test_password_length(self):
