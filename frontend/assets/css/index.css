@@ -131,6 +131,8 @@ a:hover {
 
 /* Navigation links: text-only, blue color, hover underline + small scale */
 .main-nav a {
+    position: relative;
+    left: 70px;
     display: inline-block;
     padding: 8px 14px;
     background: transparent; /* keep minimal text-only look */
@@ -143,28 +145,57 @@ a:hover {
     box-shadow: none;
 }
 
-/* Style the theme toggle button to visually match nav links and align via flex */
+/* Replace previous themeToggle styling with a nicer pill-style button */
 .main-nav button#themeToggle {
-    display: inline-block;
-    padding: 6px 10px;
-    margin-left: 6px;
-    background: transparent;
-    color: var(--accent);
+    display: inline-flex;
+    position: relative;
+    left: 80px;
+    align-items: center;
+    gap: 8px;
+    padding: 7px 14px;
+    background: linear-gradient(135deg, var(--accent), var(--accent-hover));
+    color: var(--accent-contrast);
     border: none;
+    border-radius: 999px; /* pill */
     cursor: pointer;
     font-weight: 600;
     font-size: 0.95rem;
-    border-radius: 8px;
-    transition: color 180ms ease, transform 180ms ease;
+    box-shadow: 0 8px 20px rgba(11,22,30,0.25);
+    transform-origin: center;
+    transition: transform 180ms ease, box-shadow 180ms ease, background 180ms ease, color 180ms ease, opacity 180ms ease;
+    padding-left: 12px;
 }
+
+/* small emoji icon before the label (changes with theme) */
+.main-nav button#themeToggle::before {
+    content: "🌙";
+    display: inline-block;
+    font-size: 1.05rem;
+    line-height: 1;
+    transform: translateY(0);
+    transition: transform 180ms ease, opacity 180ms ease;
+}
+
+/* hover/focus affordances */
 .main-nav button#themeToggle:hover {
-    text-decoration: underline;
-    transform: scale(1.04);
-    color: var(--accent-hover);
+    transform: translateY(-2px) scale(1.03);
+    box-shadow: 0 12px 30px rgba(11,22,30,0.30);
+    opacity: 0.98;
 }
 .main-nav button#themeToggle:focus {
     outline: 3px solid var(--outline-accent);
-    outline-offset: 3px;
+    outline-offset: 4px;
+}
+
+/* Light mode: invert to subtle light pill and change icon to sun */
+html[data-theme="light"] .main-nav button#themeToggle {
+    background: linear-gradient(180deg, rgba(255,255,255,0.95), rgba(245,245,245,0.95));
+    color: var(--accent);
+    box-shadow: 0 6px 18px rgba(16,24,40,0.06);
+    border: 1px solid rgba(0,0,0,0.04);
+}
+html[data-theme="light"] .main-nav button#themeToggle::before {
+    content: "☀";
 }
 
 /* Responsive: collapse nav to smaller spacing on narrow screens */
