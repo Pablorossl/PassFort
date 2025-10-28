@@ -1,0 +1,24 @@
+{
+  "name": "passfort",
+  "version": "1.0.0",
+  "description": "PassFortGenerator is a simple yet powerful tool written in Python to generate and validate secure, customizable passwords. The project includes both backend logic and a web interface (frontend), although **the frontend is not yet connected to the backend.**",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Pablorossl/PassFort.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Pablorossl/PassFort/issues"
+  },
+  "homepage": "https://github.com/Pablorossl/PassFort#readme",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^5.1.0"
+  }
+}

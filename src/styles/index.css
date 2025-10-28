@@ -1,32 +1,6 @@
-/* Palette variables dark mode */
-:root {
-    --bg-start: #232526;
-    --bg-end: #414345;
-    --panel-bg: rgba(34, 40, 49, 0.95);
-    --accent: #00adb5;
-    --accent-hover: #008891;
-    --accent-contrast: #ffffff;
-    --muted: #cfd8dc;
-    --shadow: 0 4px 16px 0 rgba(31, 38, 135, 0.37);
-    --outline-accent: rgba(0, 173, 181, 0.18);
-    --text-color: #f4f4f4; /* used by body and general text */
-}
-
-/* alette variables light mode*/
-html[data-theme="light"] {
-    --bg-start: #f4f6f8;
-    --bg-end: #e9eef2;
-    --panel-bg: rgba(255,255,255,0.95);
-    --accent: #008891; /* keep an accent suitable for light bg */
-    --accent-hover: #007270;
-    --accent-contrast: #ffffff;
-    --muted: #6b7880;
-    --shadow: 0 6px 20px rgba(16,24,40,0.06);
-    --outline-accent: rgba(0, 136, 137, 0.12);
-    --text-color: #1f2a30; /* dark text on light background */
-}
-
-
+/* =========================
+   Reset and Base
+   ========================= */
 body {
     margin: 0;
     padding: 0;
@@ -37,6 +11,18 @@ body {
     display: flex;
     flex-direction: column;
 }
+
+main {
+    background-image: url('../../public/images/foto-2.jpeg'); 
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+/* =========================
+   Layout and Containers
+   ========================= */
 .container {
     display: grid;
     grid-template-rows: auto 1fr;
@@ -47,6 +33,10 @@ body {
     box-shadow: var(--shadow);
     padding: 32px 28px;
 }
+
+/* =========================
+   Typography
+   ========================= */
 h1 {
     text-align: center;
     font-size: 2.5rem;
@@ -54,18 +44,22 @@ h1 {
     letter-spacing: 1px;
     color: var(--accent);
 }
-p {
-    text-align: center;
-    font-size: 1.15rem;
-    margin-bottom: 28px;
-    color: #eeeeee;
-}
 h2 {
     margin-top: 0;
     color: var(--accent);
     font-size: 1.3rem;
     letter-spacing: 0.5px;
 }
+p {
+    text-align: center;
+    font-size: 1.15rem;
+    margin-bottom: 28px;
+    color: #eeeeee;
+}
+
+/* =========================
+   Lists and Elements
+   ========================= */
 ul {
     list-style: none;
     padding: 0;
@@ -80,7 +74,9 @@ li {
     justify-content: flex-start;
 }
 
-/* Primary service links (keeps button-like appearance) */
+/* =========================
+   Links and Buttons
+   ========================= */
 a {
     display: inline-block;
     padding: 12px 28px;
@@ -99,6 +95,9 @@ a:hover {
     transform: translateY(-2px) scale(1.01);
 }
 
+/* =========================
+   Header and Navigation
+   ========================= */
 .site-header {
     position: sticky;
     top: 0;
@@ -120,7 +119,7 @@ a:hover {
     right: 80px;
     font-weight: 700;
     color: var(--accent);
-    font-size: 1.6rem;
+    font-size: 1.8rem;
     letter-spacing: 0.6px;
 }
 .main-nav {
@@ -128,14 +127,12 @@ a:hover {
     gap: 12px;
     align-items: center;
 }
-
-/* Navigation links: text-only, blue color, hover underline + small scale */
 .main-nav a {
     position: relative;
     left: 70px;
     display: inline-block;
     padding: 8px 14px;
-    background: transparent; /* keep minimal text-only look */
+    background: transparent;
     color: var(--accent);
     border-radius: 8px;
     text-decoration: none;
@@ -145,7 +142,9 @@ a:hover {
     box-shadow: none;
 }
 
-/* Replace previous themeToggle styling with a nicer pill-style button */
+/* =========================
+   Theme Button
+   ========================= */
 .main-nav button#themeToggle {
     display: inline-flex;
     position: relative;
@@ -156,7 +155,7 @@ a:hover {
     background: linear-gradient(135deg, var(--accent), var(--accent-hover));
     color: var(--accent-contrast);
     border: none;
-    border-radius: 999px; /* pill */
+    border-radius: 999px;
     cursor: pointer;
     font-weight: 600;
     font-size: 0.95rem;
@@ -165,8 +164,6 @@ a:hover {
     transition: transform 180ms ease, box-shadow 180ms ease, background 180ms ease, color 180ms ease, opacity 180ms ease;
     padding-left: 12px;
 }
-
-/* small emoji icon before the label (changes with theme) */
 .main-nav button#themeToggle::before {
     content: "🌙";
     display: inline-block;
@@ -175,8 +172,6 @@ a:hover {
     transform: translateY(0);
     transition: transform 180ms ease, opacity 180ms ease;
 }
-
-/* hover/focus affordances */
 .main-nav button#themeToggle:hover {
     transform: translateY(-2px) scale(1.03);
     box-shadow: 0 12px 30px rgba(11,22,30,0.30);
@@ -186,8 +181,6 @@ a:hover {
     outline: 3px solid var(--outline-accent);
     outline-offset: 4px;
 }
-
-/* Light mode: invert to subtle light pill and change icon to sun */
 html[data-theme="light"] .main-nav button#themeToggle {
     background: linear-gradient(180deg, rgba(255,255,255,0.95), rgba(245,245,245,0.95));
     color: var(--accent);
@@ -198,7 +191,9 @@ html[data-theme="light"] .main-nav button#themeToggle::before {
     content: "☀";
 }
 
-/* Responsive: collapse nav to smaller spacing on narrow screens */
+/* =========================
+   Responsive
+   ========================= */
 @media (max-width: 700px) {
     .header-inner {
         padding: 10px 12px;
@@ -207,9 +202,9 @@ html[data-theme="light"] .main-nav button#themeToggle::before {
         padding: 6px 10px;
         font-size: 0.9rem;
     }
-
-    /* Stack container content nicely under header */
     .container {
         margin-top: 16px;
     }
 }
+
+

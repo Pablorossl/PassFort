@@ -1,0 +1,28 @@
+/* =========================
+   1. Variables and Themes
+   ========================= */
+:root {
+    --bg-start: #232526;
+    --bg-end: #414345;
+    --panel-bg: rgba(34, 40, 49, 0.95);
+    --accent: #00adb5;
+    --accent-hover: #008891;
+    --accent-contrast: #ffffff;
+    --muted: #cfd8dc;
+    --shadow: 0 4px 16px 0 rgba(31, 38, 135, 0.37);
+    --outline-accent: rgba(0, 173, 181, 0.18);
+    --text-color: #f4f4f4;
+}
+
+html[data-theme="light"] {
+    --bg-start: #f4f6f8;
+    --bg-end: #e9eef2;
+    --panel-bg: rgba(255,255,255,0.95);
+    --accent: #008891;
+    --accent-hover: #007270;
+    --accent-contrast: #ffffff;
+    --muted: #6b7880;
+    --shadow: 0 6px 20px rgba(16,24,40,0.06);
+    --outline-accent: rgba(0, 136, 137, 0.12);
+    --text-color: #1f2a30;
+}

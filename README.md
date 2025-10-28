@@ -1,6 +1,6 @@
 # 🛡️ PassFortGenerator
 
-PassFortGenerator is a simple yet powerful tool written in Python to generate and validate secure, customizable passwords. The project includes both backend logic and a web interface (frontend), although **the frontend is not yet connected to the backend.**
+PassFortGenerator is a simple yet powerful tool to generate and validate secure, customizable passwords. The project includes both backend logic (Python) and a modern web interface (HTML/CSS/JS).
 
 ---
 
@@ -8,32 +8,38 @@ PassFortGenerator is a simple yet powerful tool written in Python to generate an
 
 - Customizable password length.
 - Options to include uppercase letters, numbers, and symbols.
-- Generates secure passwords to protect your accounts.
-- Validator indicating the security level of the password.
-- Lightweight and easy-to-use code.
-- **Web frontend ready (HTML/CSS), pending integration with the backend**
+- Generates strong, secure passwords to protect your accounts.
+- Password strength validator with visual feedback.
+- Clean, responsive web interface.
+- **Frontend ready (HTML/CSS/JS), backend integration pending.**
 
 ---
 
-## 🛠️ Technologies used
+## 🛠️ Technologies Used
 
-- Python 3
-- secrets (aleatoriedad criptográficamente segura)
-- string (manejo de conjuntos de caracteres)
-- HTML y CSS (para el frontend web)
+- **Python 3** (core logic)
+- **secrets** (cryptographically secure randomness)
+- **string** (character set management)
+- **HTML, CSS, JavaScript** (frontend web interface)
 
 ---
 
 ## 📦 Installation
 
-1. Clone this repository or download the files:
+1. Clone this repository:
 
    ```bash
    git clone https://github.com/yourusername/passfortgenerator.git
    cd passfortgenerator/PassFort
+   ```
 
+2. (Optional) Create a virtual environment and install dependencies if you plan to extend the backend.
+
+---
 
 ## ▶️ Usage
+
+**Terminal (CLI):**
 
 Run the password generator from the terminal:
 
@@ -41,11 +47,31 @@ Run the password generator from the terminal:
 python main.py
 ```
 
-## 🌐 Web Frontend
+**Web Frontend:**
 
-The project includes frontend files (`index.html` and `styles.css`) in the corresponding folder.  
-**Currently, the frontend is not connected to the Python backend.**  
-You can open the HTML file in your browser to view the interface, but password generation and validation will not work until it is integrated with the backend (Flask or Django).
+- Open `public/index.html` in your browser to use the web interface.
+- **Note:** The frontend is not yet connected to the Python backend. Password generation and validation are currently client-side only.
+- Backend integration (e.g., with Django) is planned for future releases.
+
+---
+
+## 🌐 Project Structure
+
+```
+PassFort/
+├── public/
+│   ├── index.html
+│   └── ... (other HTML files)
+├── src/
+│   ├── styles/
+│   │   ├── index.css
+│   │   └── ...
+│   ├── scripts/
+│   │   └── ...
+│   └── ...
+├── main.py
+└── README.md
+```
 
 ---
 
@@ -57,11 +83,12 @@ This project is open source and available under the MIT License.
 
 ## 🤝 Contributing
 
-Contributions are welcome! If you have suggestions or improvements, please open an issue or submit a pull request.
+Contributions are welcome!  
+If you have suggestions, bug reports, or improvements, please open an issue or submit a pull request.
 
 ---
 
 ## 📧 Contact
 
-Would you like the documentation in English or do you have any questions?  
-Feel free to reach out at **prosaleslzn@gmail.com** or **rosales.pablo1@icloud.com**.
+Questions or need documentation in another language?  
+Contact: **prosaleslzn@gmail.com** or **rosales.pablo1@icloud.com**

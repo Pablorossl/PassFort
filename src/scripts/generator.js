@@ -6,7 +6,26 @@ document.getElementById('passwordForm').onsubmit = async function(e) {
 	const numeros = document.getElementById('numeros').checked;
 	const simbolos = document.getElementById('simbolos').checked;
 
-	document.getElementById('resultado').innerText = "Generated password: ********";
+	let mensaje = "Generated password: ********";
+	if (mayusculas && numeros && simbolos) {
+		mensaje = "Password with uppercase, numbers, and symbols generated!";
+	} else if (mayusculas && numeros) {
+		mensaje = "Password with uppercase and numbers generated!";
+	} else if (mayusculas && simbolos) {
+		mensaje = "Password with uppercase and symbols generated!";
+	} else if (numeros && simbolos) {
+		mensaje = "Password with numbers and symbols generated!";
+	} else if (mayusculas) {
+		mensaje = "Password with uppercase generated!";
+	} else if (numeros) {
+		mensaje = "Password with numbers generated!";
+	} else if (simbolos) {
+		mensaje = "Password with symbols generated!";
+	} else {
+		mensaje = "Password with only lowercase letters generated!";
+	}
+
+	document.getElementById('resultado').innerText = mensaje;
 	// Elimina la línea que resetea el nivel de seguridad para que se mantenga el valor calculado
 	// document.getElementById('seguridad').innerText = "Security level:";
 }
