@@ -76,27 +76,32 @@ document.addEventListener('DOMContentLoaded', function () {
 	function updateLengthValue() {
 		output.textContent = range.value;
 		const val = parseInt(range.value, 10);
+
+		// Professional color palette and smooth transitions
+		output.style.transition = "background 0.3s, color 0.3s";
+		let bg = "#eebbc3", color = "#232946", secText = "";
+
 		if (val >= 1 && val <= 7) {
-			output.style.background = "#e74c3c"; // red
-			output.style.color = "#fff";
-			security.innerText = "Security level: Low";
+			bg = "#ff4d4f"; 
+			color = "#fff";
+			secText = "Security level: Low";
 		} else if (val >= 8 && val <= 14) {
-			output.style.background = "#f39c12"; // orange
-			output.style.color = "#232946";
-			security.innerText = "Security level: Medium";
+			bg = "#ffb300"; 
+			color = "#232946";
+			secText = "Security level: Medium";
 		} else if (val >= 15 && val <= 21) {
-			output.style.background = "#f7e017"; // yellow
-			output.style.color = "#232946";
-			security.innerText = "Security level: High";
+			bg = "#ffe066"; 
+			color = "#232946";
+			secText = "Security level: High";
 		} else if (val >= 22 && val <= 30) {
-			output.style.background = "#27ae60"; // green
-			output.style.color = "#fff";
-			security.innerText = "Security level: Very high";
-		} else {
-			output.style.background = "#eebbc3"; // default color
-			output.style.color = "#232946";
-			security.innerText = "";
+			bg = "#00b894"; 
+			color = "#fff";
+			secText = "Security level: Very high";
 		}
+
+		output.style.background = bg;
+		output.style.color = color;
+		security.innerText = secText;
 	}
 	range.addEventListener('input', updateLengthValue);
 	updateLengthValue();
