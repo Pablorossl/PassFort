@@ -1,39 +1,77 @@
-document.getElementById('passwordForm').onsubmit = async function(e) {
-	e.preventDefault();
-	// PENDIENTE: Crear una petición AJAX al backend
-	const longitud = document.getElementById('length').value;
-	const mayusculas = document.getElementById('mayusculas').checked;
-	const numeros = document.getElementById('numeros').checked;
-	const simbolos = document.getElementById('simbolos').checked;
-
-	let mensaje = "Generated password: ********";
-	if (mayusculas && numeros && simbolos) {
-		mensaje = "Password with uppercase, numbers, and symbols generated!";
-	} else if (mayusculas && numeros) {
-		mensaje = "Password with uppercase and numbers generated!";
-	} else if (mayusculas && simbolos) {
-		mensaje = "Password with uppercase and symbols generated!";
-	} else if (numeros && simbolos) {
-		mensaje = "Password with numbers and symbols generated!";
-	} else if (mayusculas) {
-		mensaje = "Password with uppercase generated!";
-	} else if (numeros) {
-		mensaje = "Password with numbers generated!";
-	} else if (simbolos) {
-		mensaje = "Password with symbols generated!";
-	} else {
-		mensaje = "Password with only lowercase letters generated!";
+// =========================
+// Password Generation Logic
+// =========================
+function generatePassword(length, uppercase, numbers, symbols) {
+	let chars = 'abcdefghijklmnopqrstuvwxyz';
+	if (uppercase) chars += 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+	if (numbers) chars += '0123456789';
+	if (symbols) chars += '!@#$%^&*()-_=+[]{}|;:,.<>?/';
+	if (!chars) return '';
+	let password = '';
+	for (let i = 0; i < length; i++) {
+		password += chars.charAt(Math.floor(Math.random() * chars.length));
 	}
-
-	document.getElementById('resultado').innerText = mensaje;
-	// Elimina la línea que resetea el nivel de seguridad para que se mantenga el valor calculado
-	// document.getElementById('seguridad').innerText = "Security level:";
+	return password;
 }
 
-document.addEventListener('DOMContentLoaded', function() {
+// =========================
+// Form Submission Handler
+// =========================
+document.getElementById('passwordForm').onsubmit = async function (e) {
+	e.preventDefault();
+
+	const length = parseInt(document.getElementById('length').value, 10);
+	const uppercase = document.getElementById('mayusculas').checked;
+	const numbers = document.getElementById('numeros').checked;
+	const symbols = document.getElementById('simbolos').checked;
+
+	const password = generatePassword(length, uppercase, numbers, symbols);
+
+	const resultado = document.getElementById('resultado');
+	resultado.innerHTML = '';
+
+	// Password text
+	const passwordSpan = document.createElement('span');
+	passwordSpan.textContent = "Generated password: " + password;
+	resultado.appendChild(passwordSpan);
+
+	// Copy to clipboard button with emoji and effect
+	const copyBtn = document.createElement('button');
+	copyBtn.type = 'button';
+	copyBtn.className = 'password-emoji';
+	copyBtn.innerHTML = '📋 Copy to clipboard';
+	copyBtn.title = 'Copy to clipboard';
+	copyBtn.style.marginLeft = '8px';
+	copyBtn.style.fontSize = '0.85em';
+	copyBtn.style.padding = '1px 8px';
+	copyBtn.style.borderRadius = '4px';
+	copyBtn.style.border = '1px solid #d1d5db';
+	copyBtn.style.background = '#f8fafc';
+	copyBtn.style.cursor = 'pointer';
+	copyBtn.style.transition = 'background 0.2s, transform 0.2s';
+
+	copyBtn.onclick = function () {
+		navigator.clipboard.writeText(password);
+		copyBtn.innerHTML = '✅ Copied!';
+		copyBtn.style.background = '#d1ffd6';
+		copyBtn.style.transform = 'scale(1.08)';
+		setTimeout(() => {
+			copyBtn.innerHTML = '📋 Copy to clipboard';
+			copyBtn.style.background = '#f8fafc';
+			copyBtn.style.transform = 'scale(1)';
+		}, 1200);
+	};
+
+	resultado.appendChild(copyBtn);
+};
+
+// =========================
+// Range and Security Level UI
+// =========================
+document.addEventListener('DOMContentLoaded', function () {
 	const range = document.getElementById('length');
 	const output = document.getElementById('lengthValue');
-	const seguridad = document.getElementById('seguridad');
+	const security = document.getElementById('seguridad');
 
 	function updateLengthValue() {
 		output.textContent = range.value;
@@ -41,26 +79,25 @@ document.addEventListener('DOMContentLoaded', function() {
 		if (val >= 1 && val <= 7) {
 			output.style.background = "#e74c3c"; // red
 			output.style.color = "#fff";
-			seguridad.innerText = "Security level: Low";
+			security.innerText = "Security level: Low";
 		} else if (val >= 8 && val <= 14) {
 			output.style.background = "#f39c12"; // orange
 			output.style.color = "#232946";
-			seguridad.innerText = "Security level: Medium";
+			security.innerText = "Security level: Medium";
 		} else if (val >= 15 && val <= 21) {
 			output.style.background = "#f7e017"; // yellow
 			output.style.color = "#232946";
-			seguridad.innerText = "Security level: High";
+			security.innerText = "Security level: High";
 		} else if (val >= 22 && val <= 30) {
 			output.style.background = "#27ae60"; // green
 			output.style.color = "#fff";
-			seguridad.innerText = "Security level: Very high";
+			security.innerText = "Security level: Very high";
 		} else {
 			output.style.background = "#eebbc3"; // default color
 			output.style.color = "#232946";
-			seguridad.innerText = "";
+			security.innerText = "";
 		}
 	}
-
 	range.addEventListener('input', updateLengthValue);
-	updateLengthValue(); // Inicializa el color y el nivel al cargar
+	updateLengthValue();
 });

@@ -34,6 +34,30 @@ main {
     padding: 32px 28px;
 }
 
+.container ul {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 18px;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    background: none;
+    box-shadow: none;
+    border-radius: 0;
+    max-width: 100%;
+}
+
+.container ul li {
+    flex: 1 1 40%;
+    min-width: 220px;
+    margin-bottom: 18px;
+    display: flex;
+    justify-content: center;
+}
+
 /* =========================
    Typography
    ========================= */
@@ -206,5 +230,6 @@ html[data-theme="light"] .main-nav button#themeToggle::before {
         margin-top: 16px;
     }
 }
+
 
 

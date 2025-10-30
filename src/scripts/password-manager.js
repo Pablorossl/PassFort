@@ -1,6 +1,4 @@
-// ...existing code or create new file...
 
-// Simple AES encryption/decryption using Web Crypto API
 async function getKey(masterKey) {
     const enc = new TextEncoder();
     return crypto.subtle.importKey(
@@ -74,7 +72,6 @@ async function loadPasswords() {
             li.textContent = `${site} | ${username} | ${password}`;
             list.appendChild(li);
         } catch {
-            // Wrong key or corrupted data
         }
     }
 }

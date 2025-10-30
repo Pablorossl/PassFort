@@ -92,3 +92,13 @@ If you have suggestions, bug reports, or improvements, please open an issue or s
 
 Questions or need documentation in another language?  
 Contact: **prosaleslzn@gmail.com** or **rosales.pablo1@icloud.com**
+
+## Coming soon 
+
+✅ Generador personalizado (ya lo tienes).
+✅ Indicador de fuerza (ya lo tienes).
+🔜 Modo rápido (“Strong Password in 1 click”).
+🔜 Historial local (localStorage).
+🔜 Modo oscuro/claro.
+🔜 Página educativa con consejos de ciberseguridad.
+🔜 Diseño bonito y responsivo (para practicar CSS y mostrarlo en tu portfolio).
