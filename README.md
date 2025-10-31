@@ -1,104 +1,94 @@
-# 🛡️ PassFortGenerator
+# 🛡️ PassFort
 
-PassFortGenerator is a simple yet powerful tool to generate and validate secure, customizable passwords. The project includes both backend logic (Python) and a modern web interface (HTML/CSS/JS).
+PassFort is a modern, user-friendly platform for generating and managing secure passwords. It features a customizable password generator, password manager (planned), and a responsive, accessible web interface. The project is designed for easy migration to React and backend integration with Django.
 
 ---
 
 ## 🚀 Features
 
-- Customizable password length.
-- Options to include uppercase letters, numbers, and symbols.
-- Generates strong, secure passwords to protect your accounts.
-- Password strength validator with visual feedback.
-- Clean, responsive web interface.
-- **Frontend ready (HTML/CSS/JS), backend integration pending.**
+- Customizable password generator (length, uppercase, numbers, symbols)
+- Password strength indicator
+- Copy-to-clipboard functionality with feedback
+- Responsive and accessible UI
+- Light/Dark mode toggle
+- Professional, modern design
+- Ready for backend integration (Django REST API)
+- Well-structured for future migration to React
 
 ---
 
-## 🛠️ Technologies Used
+## 📁 Project Structure
 
-- **Python 3** (core logic)
-- **secrets** (cryptographically secure randomness)
-- **string** (character set management)
-- **HTML, CSS, JavaScript** (frontend web interface)
+```
+passfort/
+├── backend/                  # (future) Django backend
+├── public/                   # Static HTML files and assets
+│   ├── index.html
+│   ├── generator.html
+│   └── images/
+├── src/
+│   ├── styles/               # CSS files (global and per page)
+│   ├── scripts/              # JS files (per page/component)
+│   └── ...
+├── README.md
+└── requirements.txt          # (future) Django dependencies
+```
 
 ---
 
-## 📦 Installation
+## 🌐 Usage
 
-1. Clone this repository:
+### Local Development
 
+1. **Clone the repository:**
    ```bash
-   git clone https://github.com/yourusername/passfortgenerator.git
-   cd passfortgenerator/PassFort
+   git clone https://github.com/yourusername/passfort.git
+   cd passfort
    ```
 
-2. (Optional) Create a virtual environment and install dependencies if you plan to extend the backend.
+2. **Open the frontend:**
+   - Open `public/index.html` in your browser for the main page.
+
+3. **Password Generator:**
+   - Choose your options (length, uppercase, numbers, symbols).
+   - Click "Create password" to generate.
+   - Use the "Copy to clipboard" button to copy the password.
 
 ---
 
-## ▶️ Usage
+## 🛠️ Technologies
 
-**Terminal (CLI):**
-
-Run the password generator from the terminal:
-
-```bash
-python main.py
-```
-
-**Web Frontend:**
-
-- Open `public/index.html` in your browser to use the web interface.
-- **Note:** The frontend is not yet connected to the Python backend. Password generation and validation are currently client-side only.
-- Backend integration (e.g., with Django) is planned for future releases.
+- HTML5, CSS3 (custom properties, flex/grid, transitions, keyframes)
+- JavaScript (ES6+, modular, accessible)
+- [Planned] React (for future migration)
+- [Planned] Django REST Framework (backend API)
 
 ---
 
-## 🌐 Project Structure
+## 🧑‍💻 Code Style & Comments
 
-```
-PassFort/
-├── public/
-│   ├── index.html
-│   └── ... (other HTML files)
-├── src/
-│   ├── styles/
-│   │   ├── index.css
-│   │   └── ...
-│   ├── scripts/
-│   │   └── ...
-│   └── ...
-├── main.py
-└── README.md
-```
-
----
-
-## 📜 License
-
-This project is open source and available under the MIT License.
+- All code is commented for clarity and maintainability.
+- CSS and JS are modular and grouped by feature/page.
+- Accessibility and responsive design are prioritized.
 
 ---
 
 ## 🤝 Contributing
 
 Contributions are welcome!  
-If you have suggestions, bug reports, or improvements, please open an issue or submit a pull request.
+- Fork the repo and create a feature branch.
+- Add clear comments and follow the existing code style.
+- Open a pull request with a clear description.
+
+---
+
+## 📜 License
+
+MIT License
 
 ---
 
 ## 📧 Contact
 
-Questions or need documentation in another language?  
-Contact: **prosaleslzn@gmail.com** or **rosales.pablo1@icloud.com**
-
-## Coming soon 
-
-✅ Generador personalizado (ya lo tienes).
-✅ Indicador de fuerza (ya lo tienes).
-🔜 Modo rápido (“Strong Password in 1 click”).
-🔜 Historial local (localStorage).
-🔜 Modo oscuro/claro.
-🔜 Página educativa con consejos de ciberseguridad.
-🔜 Diseño bonito y responsivo (para practicar CSS y mostrarlo en tu portfolio).
+For questions or suggestions, contact:  
+**prosaleslzn@gmail.com** or **rosales.pablo1@icloud.com**
