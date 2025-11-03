@@ -2,16 +2,19 @@
 // Config: Colors & Texts (for i18n and customization)
 // =========================
 const CONFIG = {
+	// Security levels for password strength indicator
 	securityLevels: [
 		{ min: 1, max: 7, bg: "#ff4d4f", color: "#fff", text: "Security level: Low" },
 		{ min: 8, max: 14, bg: "#ffb300", color: "#232946", text: "Security level: Medium" },
 		{ min: 15, max: 21, bg: "#ffe066", color: "#232946", text: "Security level: High" },
 		{ min: 22, max: 30, bg: "#00b894", color: "#fff", text: "Security level: Very high" }
 	],
+	// Texts for copy-to-clipboard button
 	copy: {
 		initial: '📋 Copy to clipboard',
 		success: '✅ Copied!'
 	},
+	// Texts for the main submit button
 	button: {
 		initial: 'Create password',
 		again: 'Generate again'
@@ -38,6 +41,7 @@ function generatePassword(length, uppercase, numbers, symbols) {
 	if (!chars) return '';
 	let password = '';
 	for (let i = 0; i < length; i++) {
+		// Pick a random character from the allowed set
 		password += chars.charAt(Math.floor(Math.random() * chars.length));
 	}
 	return password;
@@ -49,6 +53,7 @@ function generatePassword(length, uppercase, numbers, symbols) {
 
 /**
  * Returns the security config for a given password length.
+ * Used to determine the color and label for the strength indicator.
  * @param {number} length
  * @returns {object} Security config (bg, color, text)
  */
@@ -76,6 +81,7 @@ function createPasswordSpan(password) {
 
 /**
  * Creates and returns a copy-to-clipboard button.
+ * The button provides feedback when the password is copied.
  * @param {string} password
  * @returns {HTMLElement}
  */
@@ -85,6 +91,7 @@ function createCopyButton(password) {
 	btn.className = 'password-emoji';
 	btn.innerHTML = CONFIG.copy.initial;
 	btn.title = CONFIG.copy.initial;
+	// Inline styles for button appearance
 	btn.style.marginLeft = '8px';
 	btn.style.fontSize = '0.85em';
 	btn.style.padding = '1px 8px';
@@ -94,6 +101,7 @@ function createCopyButton(password) {
 	btn.style.cursor = 'pointer';
 	btn.style.transition = 'background 0.2s, transform 0.2s';
 
+	// Copy password to clipboard and show feedback
 	btn.onclick = function () {
 		navigator.clipboard.writeText(password);
 		btn.innerHTML = CONFIG.copy.success;
@@ -110,6 +118,8 @@ function createCopyButton(password) {
 
 /**
  * Updates the security level UI (color, text) and returns the config.
+ * Changes the background and text color of the length indicator,
+ * and updates the security level label.
  * @param {number} length
  * @param {HTMLElement} output
  * @param {HTMLElement} security
@@ -125,6 +135,7 @@ function updateSecurityUI(length, output, security) {
 
 /**
  * Updates the submit button text after first generation.
+ * Changes the button label to "Generate again".
  */
 function updateSubmitButtonText() {
 	const submitBtn = document.querySelector('#passwordForm button[type="submit"]');
@@ -137,33 +148,39 @@ function updateSubmitButtonText() {
 // Form Submission Handler
 // =========================
 
+/**
+ * Handles the password form submission.
+ * Generates a password, updates the UI, and sets up copy functionality.
+ */
 document.getElementById('passwordForm').onsubmit = async function (e) {
 	e.preventDefault();
 
+	// Get user-selected options
 	const length = parseInt(document.getElementById('length').value, 10);
 	const uppercase = document.getElementById('mayusculas').checked;
 	const numbers = document.getElementById('numeros').checked;
 	const symbols = document.getElementById('simbolos').checked;
 
+	// Generate password
 	const password = generatePassword(length, uppercase, numbers, symbols);
 
 	const resultado = document.getElementById('resultado');
 	resultado.innerHTML = '';
 
-	// Add generated password span
+	// Add generated password span to the result area
 	const passwordSpan = createPasswordSpan(password);
 	resultado.appendChild(passwordSpan);
 
-	// Add copy-to-clipboard button
+	// Add copy-to-clipboard button to the result area
 	const copyBtn = createCopyButton(password);
 	resultado.appendChild(copyBtn);
 
-	// Restart animation
+	// Restart fade-in animation for the password
 	passwordSpan.classList.remove('password-fadein');
 	void passwordSpan.offsetWidth;
 	passwordSpan.classList.add('password-fadein');
 
-	// Update submit button text
+	// Update submit button text to "Generate again"
 	updateSubmitButtonText();
 };
 
@@ -171,6 +188,10 @@ document.getElementById('passwordForm').onsubmit = async function (e) {
 // Range and Security Level UI
 // =========================
 
+/**
+ * Handles the range input for password length.
+ * Updates the length value display and security level indicator.
+ */
 document.addEventListener('DOMContentLoaded', function () {
 	const range = document.getElementById('length');
 	const output = document.getElementById('lengthValue');
@@ -181,6 +202,7 @@ document.addEventListener('DOMContentLoaded', function () {
 		updateSecurityUI(parseInt(range.value, 10), output, security);
 	}
 
+	// Update UI on range input change
 	range.addEventListener('input', handleRangeInput);
 	handleRangeInput();
 });
