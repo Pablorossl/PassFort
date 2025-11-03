@@ -8,20 +8,24 @@ body {
     background: linear-gradient(135deg, var(--bg-start) 0%, var(--bg-end) 100%);
     color: var(--text-color);
     min-height: 100vh;
+    min-width: 100vw;
+    width: 100vw;
+    overflow-x: hidden;
     display: flex;
     flex-direction: column;
 }
 
 main {
     background-image: url('../../public/images/foto-2.jpeg'); 
-    background-size:cover;
+    background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
     background-attachment: fixed;
     flex: 1 1 auto;
-    width: 100%;
+    width: 100vw;
     min-height: 100vh;
     padding: 0 0.5em;
+    box-sizing: border-box;
 }
 
 /* =========================
@@ -30,13 +34,13 @@ main {
 .container {
     display: flex;
     flex-direction: column;
-    max-width: 98vw;
-    margin: 18px auto;
+    max-width: 100vw;
+    margin: 0 auto;
     background: var(--panel-bg);
     border-radius: 18px;
     box-shadow: var(--shadow);
     padding: 14px 8px;
-    width: 100%;
+    width: 100vw;
     box-sizing: border-box;
 }
 
@@ -241,10 +245,6 @@ a:hover {
     box-shadow: 0 12px 30px rgba(11,22,30,0.30);
     opacity: 0.98;
 }
-.main-nav button#themeToggle:focus {
-    outline: 3px solid var(--outline-accent);
-    outline-offset: 4px;
-}
 html[data-theme="light"] .main-nav button#themeToggle {
     background: linear-gradient(180deg, rgba(255,255,255,0.95), rgba(245,245,245,0.95));
     color: var(--accent);
@@ -260,7 +260,7 @@ html[data-theme="light"] .main-nav button#themeToggle::before {
    ========================= */
 @media (min-width: 700px) {
     .container {
-        max-width: 600px;
+        max-width: 750px;
         margin: 40px auto;
         padding: 32px 28px;
     }
