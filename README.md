@@ -1,17 +1,18 @@
 # 🛡️ PassFort
 
-PassFort is a modern, user-friendly platform for generating and managing secure passwords. It features a customizable password generator, password manager (planned), and a responsive, accessible web interface. The project is designed for easy migration to React and backend integration with Django.
+**PassFort** is a modern, user-friendly platform for generating and managing secure passwords. It features a customizable password generator, a planned password manager, and a responsive, accessible web interface. The project is structured for easy migration to React and backend integration with Django.
 
 ---
 
 ## 🚀 Features
 
 - Customizable password generator (length, uppercase, numbers, symbols)
-- Password strength indicator
-- Copy-to-clipboard functionality with feedback
-- Responsive and accessible UI
+- Password strength indicator with professional color feedback
+- Copy-to-clipboard functionality with instant feedback
+- Responsive, mobile-first, and accessible UI
 - Light/Dark mode toggle
-- Professional, modern design
+- Modern, professional design
+- Modular codebase (CSS/JS by feature)
 - Ready for backend integration (Django REST API)
 - Well-structured for future migration to React
 
@@ -29,6 +30,7 @@ passfort/
 ├── src/
 │   ├── styles/               # CSS files (global and per page)
 │   ├── scripts/              # JS files (per page/component)
+│   ├── services/             # (optional) Business logic, API, or auth helpers
 │   └── ...
 ├── README.md
 └── requirements.txt          # (future) Django dependencies
@@ -36,7 +38,7 @@ passfort/
 
 ---
 
-## 🌐 Usage
+## 🌐 Getting Started
 
 ### Local Development
 
@@ -51,7 +53,7 @@ passfort/
 
 3. **Password Generator:**
    - Choose your options (length, uppercase, numbers, symbols).
-   - Click "Create password" to generate.
+   - Click "Create password" to generate a secure password.
    - Use the "Copy to clipboard" button to copy the password.
 
 ---
@@ -65,11 +67,23 @@ passfort/
 
 ---
 
-## 🧑‍💻 Code Style & Comments
+## 🧑‍💻 Code Style & Best Practices
 
-- All code is commented for clarity and maintainability.
-- CSS and JS are modular and grouped by feature/page.
-- Accessibility and responsive design are prioritized.
+- All code is thoroughly commented for clarity and maintainability.
+- CSS and JS are modular, grouped by feature/page.
+- Accessibility and responsive, mobile-first design are prioritized.
+- Uses CSS variables for easy theming and customization.
+- Follows best practices for security and code organization.
+
+---
+
+## 📈 Roadmap
+
+- [ ] Password manager with encryption (in-browser, AES-GCM)
+- [ ] User authentication and cloud sync (Django backend)
+- [ ] React migration for frontend
+- [ ] Multi-language support (i18n)
+- [ ] Advanced password policies and generator options
 
 ---
 
@@ -78,7 +92,7 @@ passfort/
 Contributions are welcome!  
 - Fork the repo and create a feature branch.
 - Add clear comments and follow the existing code style.
-- Open a pull request with a clear description.
+- Open a pull request with a clear description of your changes.
 
 ---
 
