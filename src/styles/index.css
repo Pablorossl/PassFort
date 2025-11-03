@@ -14,33 +14,39 @@ body {
 
 main {
     background-image: url('../../public/images/foto-2.jpeg'); 
-    background-size: cover;
+    background-size:cover;
     background-position: center;
     background-repeat: no-repeat;
     background-attachment: fixed;
+    flex: 1 1 auto;
+    width: 100%;
+    min-height: 100vh;
+    padding: 0 0.5em;
 }
 
 /* =========================
    Layout and Containers
    ========================= */
 .container {
-    display: grid;
-    grid-template-rows: auto 1fr;
-    max-width: 600px;
-    margin: 40px auto;
+    display: flex;
+    flex-direction: column;
+    max-width: 98vw;
+    margin: 18px auto;
     background: var(--panel-bg);
     border-radius: 18px;
     box-shadow: var(--shadow);
-    padding: 32px 28px;
+    padding: 14px 8px;
+    width: 100%;
+    box-sizing: border-box;
 }
 
 .container ul {
     display: flex;
     flex-wrap: wrap;
-    gap: 18px;
+    gap: 12px;
     justify-content: center;
     align-items: center;
-    flex-direction: row;
+    flex-direction: column;
     width: 100%;
     padding: 0;
     margin: 0;
@@ -51,9 +57,9 @@ main {
 }
 
 .container ul li {
-    flex: 1 1 40%;
-    min-width: 220px;
-    margin-bottom: 18px;
+    flex: 1 1 100%;
+    min-width: 0;
+    margin-bottom: 10px;
     display: flex;
     justify-content: center;
 }
@@ -63,21 +69,21 @@ main {
    ========================= */
 h1 {
     text-align: center;
-    font-size: 2.5rem;
-    margin-bottom: 12px;
+    font-size: 1.7rem;
+    margin-bottom: 10px;
     letter-spacing: 1px;
     color: var(--accent);
 }
 h2 {
     margin-top: 0;
     color: var(--accent);
-    font-size: 1.3rem;
+    font-size: 1.1rem;
     letter-spacing: 0.5px;
 }
 p {
     text-align: center;
-    font-size: 1.15rem;
-    margin-bottom: 28px;
+    font-size: 1rem;
+    margin-bottom: 18px;
     color: #eeeeee;
 }
 
@@ -90,7 +96,7 @@ ul {
     margin: 0;
     display: flex;
     flex-direction: column;
-    gap: 18px;
+    gap: 12px;
 }
 li {
     display: flex;
@@ -103,13 +109,13 @@ li {
    ========================= */
 a {
     display: inline-block;
-    padding: 12px 28px;
+    padding: 10px 18px;
     background: var(--accent);
     color: var(--accent-contrast);
     border-radius: 8px;
     text-decoration: none;
     font-weight: 600;
-    font-size: 1.05rem;
+    font-size: 1rem;
     transition: background 0.2s, color 0.2s, transform 0.2s;
     box-shadow: 0 2px 8px rgba(0,0,0,0.08);
 }
@@ -129,21 +135,21 @@ a:hover {
     background: var(--panel-bg);
     backdrop-filter: blur(4px);
     border-bottom: 1px solid rgba(0,0,0,0.25);
+    width: 100%;
 }
 .header-inner {
-    max-width: 960px;
+    max-width: 100vw;
     margin: 0 auto;
-    padding: 12px 28px;
+    padding: 10px 8px;
     display: flex;
     align-items: center;
     justify-content: space-between;
 }
 .logo {
-    position: relative;
-    right: 80px;
+    position: static;
     font-weight: 700;
     color: var(--accent);
-    font-size: 2.1rem;
+    font-size: 1.5rem;
     letter-spacing: 1px;
     text-shadow: 0 2px 8px rgba(0,0,0,0.10);
     filter: brightness(1.1) contrast(1.1);
@@ -184,14 +190,13 @@ a:hover {
 }
 .main-nav {
     display: flex;
-    gap: 12px;
+    gap: 8px;
     align-items: center;
 }
 .main-nav a {
-    position: relative;
-    left: 70px;
+    position: static;
     display: inline-block;
-    padding: 8px 14px;
+    padding: 6px 10px;
     background: transparent;
     color: var(--accent);
     border-radius: 8px;
@@ -207,11 +212,10 @@ a:hover {
    ========================= */
 .main-nav button#themeToggle {
     display: inline-flex;
-    position: relative;
-    left: 80px;
+    position: static;
     align-items: center;
     gap: 8px;
-    padding: 7px 14px;
+    padding: 6px 10px;
     background: linear-gradient(135deg, var(--accent), var(--accent-hover));
     color: var(--accent-contrast);
     border: none;
@@ -252,18 +256,48 @@ html[data-theme="light"] .main-nav button#themeToggle::before {
 }
 
 /* =========================
-   Responsive
+   Responsive (Mobile first)
    ========================= */
-@media (max-width: 700px) {
+@media (min-width: 700px) {
+    .container {
+        max-width: 600px;
+        margin: 40px auto;
+        padding: 32px 28px;
+    }
+    .container ul {
+        flex-direction: row;
+        gap: 18px;
+    }
+    .container ul li {
+        flex: 1 1 40%;
+        min-width: 220px;
+        margin-bottom: 18px;
+    }
+    h1 {
+        font-size: 2.5rem;
+        margin-bottom: 12px;
+    }
+    h2 {
+        font-size: 1.3rem;
+    }
+    p {
+        font-size: 1.15rem;
+        margin-bottom: 28px;
+    }
     .header-inner {
-        padding: 10px 12px;
+        max-width: 960px;
+        padding: 12px 28px;
+    }
+    .main-nav {
+        gap: 12px;
     }
     .main-nav a {
-        padding: 6px 10px;
-        font-size: 0.9rem;
+        padding: 8px 14px;
+        font-size: 0.95rem;
     }
-    .container {
-        margin-top: 16px;
+    .main-nav button#themeToggle {
+        padding: 7px 14px;
+        left: 80px;
     }
 }
 
