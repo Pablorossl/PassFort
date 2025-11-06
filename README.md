@@ -30,7 +30,6 @@ passfort/
 ├── src/
 │   ├── styles/               # CSS files (global and per page)
 │   ├── scripts/              # JS files (per page/component)
-│   ├── services/             # (optional) Business logic, API, or auth helpers
 │   └── ...
 ├── README.md
 └── requirements.txt          # (future) Django dependencies

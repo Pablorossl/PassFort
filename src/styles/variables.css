@@ -26,3 +26,10 @@ html[data-theme="light"] {
     --outline-accent: rgba(0, 136, 137, 0.12);
     --text-color: #1f2a30;
 }
+
+/* Add a root class for easy React migration */
+body, #root, .app-root {
+    min-height: 100vh;
+    min-width: 100vw;
+    box-sizing: border-box;
+}

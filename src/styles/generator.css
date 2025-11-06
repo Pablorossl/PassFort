@@ -15,6 +15,10 @@ body {
     background-repeat: no-repeat;
     background-attachment: fixed;
     box-shadow: inset 0 0 180px 30px rgba(34,41,70,0.22);
+    min-height: 100vh;
+    min-width: 100vw;
+    width: 100vw;
+    overflow-x: hidden;
 }
 
 /* =========================
@@ -23,8 +27,9 @@ body {
 .container {
     position: relative;
     top: 10px;
-    max-width: 98vw;
-    margin: 12px auto;
+    max-width: 100vw;
+    width: 100vw;
+    margin: 0 auto;
     padding: 1em 0.7em 1em 0.7em;
     background: rgba(47, 53, 80, 0.93);
     border-radius: 18px;
@@ -231,6 +236,11 @@ button:hover {
     text-align: center;
     font-size: 1em;
     min-height: 1.5em;
+    transition: opacity 0.2s;
+    opacity: 1;
+}
+#seguridad:empty {
+    opacity: 0;
 }
 .generated-password {
     display: inline-block;
@@ -279,6 +289,46 @@ img[alt="Logo PassFort"] {
     margin: 0 auto 1.2em auto;
     width: 90px;
     filter: drop-shadow(0 2px 8px #0005);
+}
+
+/* =========================
+   Password strength meter styles
+   ========================= */
+meter#strength-meter {
+    width: 100%;
+    height: 1.2em;
+    border-radius: 8px;
+    background: #232946;
+    box-shadow: 0 2px 8px #0002;
+    margin-bottom: 0.2em;
+    --strength-color: #ff4d4f;
+}
+meter#strength-meter::-webkit-meter-bar {
+    background: #232946;
+    border-radius: 8px;
+}
+meter#strength-meter::-webkit-meter-optimum-value {
+    background: var(--strength-color, #ff4d4f);
+    border-radius: 8px;
+}
+meter#strength-meter::-webkit-meter-suboptimum-value {
+    background: var(--strength-color, #ffb300);
+    border-radius: 8px;
+}
+meter#strength-meter::-webkit-meter-even-less-good-value {
+    background: var(--strength-color, #ff4d4f);
+    border-radius: 8px;
+}
+meter#strength-meter::-moz-meter-bar {
+    background: var(--strength-color, #ff4d4f);
+    border-radius: 8px;
+}
+meter#strength-meter::-ms-fill-lower {
+    background: var(--strength-color, #ff4d4f);
+    border-radius: 8px;
+}
+meter#strength-meter {
+    accent-color: var(--strength-color, #ff4d4f);
 }
 
 /* =========================

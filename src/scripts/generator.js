@@ -47,6 +47,20 @@ function generatePassword(length, uppercase, numbers, symbols) {
 	return password;
 }
 
+/**
+ * Calculates password strength based on length and selected options.
+ * Returns a value from 0 (weak) to 4 (very strong).
+ */
+function getPasswordStrength(length, uppercase, numbers, symbols) {
+	let score = 0;
+	if (length >= 8) score++;
+	if (length >= 12) score++;
+	if (uppercase) score++;
+	if (numbers) score++;
+	if (symbols) score++;
+	return Math.min(score, 4);
+}
+
 // =========================
 // UI Helpers
 // =========================
@@ -117,6 +131,27 @@ function createCopyButton(password) {
 }
 
 /**
+ * Updates the password strength meter UI.
+ * @param {number} strength - Strength value from 0 to 4.
+ */
+function updateStrengthMeter(strength) {
+	const meter = document.getElementById('strength-meter');
+	const label = document.getElementById('strength-label');
+	const levels = [
+		{ text: "Very Weak", color: "#ff4d4f" },
+		{ text: "Weak", color: "#ffb300" },
+		{ text: "Medium", color: "#ffe066" },
+		{ text: "Strong", color: "#00b894" },
+		{ text: "Very Strong", color: "#00adb5" }
+	];
+	meter.value = strength;
+	meter.max = 4;
+	meter.style.setProperty('--strength-color', levels[strength].color);
+	label.textContent = levels[strength].text;
+	label.style.color = levels[strength].color;
+}
+
+/**
  * Updates the security level UI (color, text) and returns the config.
  * Changes the background and text color of the length indicator,
  * and updates the security level label.
@@ -155,25 +190,57 @@ function updateSubmitButtonText() {
 document.getElementById('passwordForm').onsubmit = async function (e) {
 	e.preventDefault();
 
-	// Get user-selected options
 	const length = parseInt(document.getElementById('length').value, 10);
 	const uppercase = document.getElementById('mayusculas').checked;
 	const numbers = document.getElementById('numeros').checked;
 	const symbols = document.getElementById('simbolos').checked;
 
-	// Generate password
 	const password = generatePassword(length, uppercase, numbers, symbols);
 
 	const resultado = document.getElementById('resultado');
 	resultado.innerHTML = '';
 
-	// Add generated password span to the result area
-	const passwordSpan = createPasswordSpan(password);
+	// Add generated password span to the result area (hidden by default)
+	const passwordSpan = createPasswordSpan('*'.repeat(password.length));
 	resultado.appendChild(passwordSpan);
+
+	// Add show/hide password toggle
+	const toggleBtn = document.createElement('button');
+	toggleBtn.type = 'button';
+	toggleBtn.textContent = '👁 Show';
+	toggleBtn.style.marginLeft = '8px';
+	toggleBtn.style.fontSize = '0.85em';
+	toggleBtn.style.padding = '1px 8px';
+	toggleBtn.style.borderRadius = '4px';
+	toggleBtn.style.border = '1px solid #d1d5db';
+	toggleBtn.style.background = '#f8fafc';
+	toggleBtn.style.cursor = 'pointer';
+	toggleBtn.style.transition = 'background 0.2s, transform 0.2s';
+
+	let isVisible = false;
+	toggleBtn.onclick = function () {
+		isVisible = !isVisible;
+		passwordSpan.textContent = isVisible ? password : '*'.repeat(password.length);
+		toggleBtn.textContent = isVisible ? '🙈 Hide' : '👁 Show';
+	};
+
+	resultado.appendChild(toggleBtn);
 
 	// Add copy-to-clipboard button to the result area
 	const copyBtn = createCopyButton(password);
 	resultado.appendChild(copyBtn);
+
+	// Show security indicator after generating password
+	let security = document.getElementById('seguridad');
+	if (!security) {
+		security = document.createElement('div');
+		security.id = 'seguridad';
+		resultado.appendChild(security);
+	} else {
+		resultado.appendChild(security);
+	}
+	const output = document.getElementById('lengthValue');
+	updateSecurityUI(length, output, security);
 
 	// Restart fade-in animation for the password
 	passwordSpan.classList.remove('password-fadein');
@@ -182,6 +249,10 @@ document.getElementById('passwordForm').onsubmit = async function (e) {
 
 	// Update submit button text to "Generate again"
 	updateSubmitButtonText();
+
+	// Update strength meter
+	const strength = getPasswordStrength(length, uppercase, numbers, symbols);
+	updateStrengthMeter(strength);
 };
 
 // =========================
@@ -195,14 +266,29 @@ document.getElementById('passwordForm').onsubmit = async function (e) {
 document.addEventListener('DOMContentLoaded', function () {
 	const range = document.getElementById('length');
 	const output = document.getElementById('lengthValue');
-	const security = document.getElementById('seguridad');
+	let security = document.getElementById('seguridad');
+	if (security) security.innerText = ''; // Hide security indicator initially
+
+	const uppercase = document.getElementById('mayusculas');
+	const numbers = document.getElementById('numeros');
+	const symbols = document.getElementById('simbolos');
 
 	function handleRangeInput() {
 		output.textContent = range.value;
-		updateSecurityUI(parseInt(range.value, 10), output, security);
+		// Do not show security indicator until password is generated
+		if (security) security.innerText = '';
+		const strength = getPasswordStrength(
+			parseInt(range.value, 10),
+			uppercase.checked,
+			numbers.checked,
+			symbols.checked
+		);
+		updateStrengthMeter(strength);
 	}
 
-	// Update UI on range input change
 	range.addEventListener('input', handleRangeInput);
+	uppercase.addEventListener('change', handleRangeInput);
+	numbers.addEventListener('change', handleRangeInput);
+	symbols.addEventListener('change', handleRangeInput);
 	handleRangeInput();
 });
