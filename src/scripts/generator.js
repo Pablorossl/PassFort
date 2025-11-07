@@ -292,3 +292,9 @@ document.addEventListener('DOMContentLoaded', function () {
 	symbols.addEventListener('change', handleRangeInput);
 	handleRangeInput();
 });
+
+
+// To improve:
+// 1. The selector for 'form#passwordForm > div[style]' in the CSS may be fragile if the inline style changes.
+// 2. The password generator uses Math.random(), which is not cryptographically secure. For higher security, consider using window.crypto.getRandomValues for password generation.
+

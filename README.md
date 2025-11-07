@@ -1,6 +1,6 @@
 # 🛡️ PassFort
 
-**PassFort** is a modern, user-friendly platform for generating and managing secure passwords. It features a customizable password generator, a planned password manager, and a responsive, accessible web interface. The project is structured for easy migration to React and backend integration with Django.
+**PassFort** is a modern, user-friendly frontend project that solves a real-world problem: creating secure passwords for better cybersecurity. It features a customizable password generator, a planned password manager, and a responsive, accessible web interface designed for mobile, tablet, and desktop.
 
 ---
 
@@ -9,12 +9,14 @@
 - Customizable password generator (length, uppercase, numbers, symbols)
 - Password strength indicator with professional color feedback
 - Copy-to-clipboard functionality with instant feedback
-- Responsive, mobile-first, and accessible UI
+- **Fully responsive design:** mobile-first, adapts to all devices
+- Accessibility best practices (semantic HTML, ARIA, keyboard navigation)
 - Light/Dark mode toggle
-- Modern, professional design
+- Modern, professional UI/UX
 - Modular codebase (CSS/JS by feature)
 - Ready for backend integration (Django REST API)
 - Well-structured for future migration to React
+- **Focus on cybersecurity:** helps users generate strong, unique passwords to protect their accounts
 
 ---
 
@@ -22,7 +24,6 @@
 
 ```
 passfort/
-├── backend/                  # (future) Django backend
 ├── public/                   # Static HTML files and assets
 │   ├── index.html
 │   ├── generator.html
@@ -32,14 +33,11 @@ passfort/
 │   ├── scripts/              # JS files (per page/component)
 │   └── ...
 ├── README.md
-└── requirements.txt          # (future) Django dependencies
 ```
 
 ---
 
 ## 🌐 Getting Started
-
-### Local Development
 
 1. **Clone the repository:**
    ```bash
@@ -50,39 +48,56 @@ passfort/
 2. **Open the frontend:**
    - Open `public/index.html` in your browser for the main page.
 
-3. **Password Generator:**
-   - Choose your options (length, uppercase, numbers, symbols).
-   - Click "Create password" to generate a secure password.
-   - Use the "Copy to clipboard" button to copy the password.
-
 ---
 
 ## 🛠️ Technologies
 
-- HTML5, CSS3 (custom properties, flex/grid, transitions, keyframes)
+- HTML5, CSS3 (custom properties, flex/grid, transitions, keyframes, **responsive design**)
 - JavaScript (ES6+, modular, accessible)
 - [Planned] React (for future migration)
-- [Planned] Django REST Framework (backend API)
 
 ---
 
 ## 🧑‍💻 Code Style & Best Practices
 
-- All code is thoroughly commented for clarity and maintainability.
+- **All code is commented** for clarity and maintainability.
 - CSS and JS are modular, grouped by feature/page.
-- Accessibility and responsive, mobile-first design are prioritized.
+- **Responsive, mobile-first design** is prioritized throughout.
+- Accessibility is considered (semantic HTML, ARIA, keyboard navigation).
 - Uses CSS variables for easy theming and customization.
 - Follows best practices for security and code organization.
+- Professional file/folder structure for scalability and easy migration to frameworks.
 
 ---
 
-## 📈 Roadmap
+## 📝 How It Works
 
-- [ ] Password manager with encryption (in-browser, AES-GCM)
-- [ ] User authentication and cloud sync (Django backend)
-- [ ] React migration for frontend
-- [ ] Multi-language support (i18n)
-- [ ] Advanced password policies and generator options
+*Custom Generator*
+- Choose your options (length, uppercase, numbers, symbols).
+- Click "Create password" to generate a secure password.
+- Use the "Copy to clipboard" button to copy the password.
+
+---
+
+## 📸 Screenshots
+
+- ![Main Page](screenshots/main_page.png)
+- ![Password Generator](screenshots/generator.png)
+
+---
+
+## 🚀 Demo
+
+- [Live Preview](https://example.com/passfort)
+
+---
+
+## 📝 Security Notes
+
+- PassFort generates strong, unique passwords to protect your accounts.
+- The password generator uses a combination of random and cryptographic methods.
+- The password strength indicator provides professional color feedback.
+- The copy-to-clipboard functionality is instant and secure.
 
 ---
 

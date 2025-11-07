@@ -105,7 +105,6 @@ label {
     background: rgba(126, 203, 255, 0.18);
     border-color: #00adb5;
 }
-/* Checkbox visual box */
 .options label::before {
     content: '';
     position: absolute;
@@ -121,13 +120,11 @@ label {
     transition: border-color 0.2s, background 0.2s, box-shadow 0.2s;
     box-sizing: border-box;
 }
-/* Checkbox checked state */
 .options input[type="checkbox"]:checked + label::before {
     border-color: #00adb5;
     background: linear-gradient(135deg, #00adb5 60%, #7ecbff 100%);
     box-shadow: 0 2px 8px #00adb544;
 }
-/* Checkbox checkmark */
 .options input[type="checkbox"]:checked + label::after {
     content: '';
     position: absolute;
@@ -146,13 +143,11 @@ label {
     box-shadow: none;
     z-index: 2;
 }
-/* Checkbox hover/focus effect */
 .options label:hover::before,
 .options input[type="checkbox"]:focus + label::before {
     background: rgba(0,173,181,0.13);
     box-shadow: 0 2px 12px #00adb533;
 }
-/* Checkbox label text hover/focus */
 .options label:hover,
 .options input[type="checkbox"]:focus + label {
     text-shadow: 0 2px 8px #00adb5cc;
@@ -334,10 +329,92 @@ meter#strength-meter {
 /* =========================
    Responsive (Mobile first)
    ========================= */
+@media (max-width: 700px) {
+    .container {
+        max-width: 100%;
+        margin: 0 auto;
+        padding: 1em 1.5em;
+        border-radius: 12px;
+        box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+    }
+    h1 {
+        font-size: 1.8em;
+        margin-bottom: 0.8em;
+    }
+    form#passwordForm {
+        display: block;
+        width: 100%;
+    }
+    form#passwordForm h2 {
+        font-size: 1.2em;
+        margin-bottom: 0.5em;
+    }
+    form#passwordForm label[for="length"] {
+        font-size: 0.9em;
+    }
+    form#passwordForm input[type="range"] {
+        height: 1em;
+    }
+    .options {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    .options label {
+        font-size: 0.9em;
+        padding: 0.2em 0.5em;
+        border-radius: 8px;
+    }
+    .options label::before {
+        width: 1.1em;
+        height: 1.1em;
+    }
+    .options input[type="checkbox"]:checked + label::after {
+        width: 0.28em;
+        height: 0.56em;
+    }
+    button {
+        padding: 0.6em;
+        font-size: 1em;
+    }
+    #resultado {
+        font-size: 0.9em;
+    }
+    #seguridad {
+        font-size: 0.9em;
+    }
+    .generated-password {
+        font-size: 1em;
+        padding: 0.25em 0.7em;
+    }
+    .back-btn {
+        padding: 8px 16px;
+        font-size: 0.9rem;
+    }
+    img[alt="Logo PassFort"] {
+        width: 80px;
+    }
+    input[type="range"] {
+        height: 1em;
+    }
+    #lengthValue {
+        padding: 0.15em 0.5em;
+        font-size: 0.9em;
+    }
+    meter#strength-meter {
+        height: 1em;
+    }
+    #strength-label {
+        font-size: 0.9em;
+    }
+}
+
+/* =========================
+   Responsive (Desktop Enhancements)
+   ========================= */
 @media (min-width: 700px) {
     .container {
-        max-width: 440px;
-        margin: 60px auto;
+        max-width: 800px;
+        margin: 80px auto;
         padding: 2em 2em 2em 2em;
     }
     h1 {
