@@ -1,26 +1,88 @@
-# 🛡️ PassFort
+# 🛡️ PassFort - Secure Password Manager
 
-**PassFort** is a modern, user-friendly frontend project that solves a real-world problem: creating secure passwords for better cybersecurity. It features a customizable password generator, a planned password manager, and a responsive, accessible web interface designed for mobile, tablet, and desktop.
+> A professional frontend showcase project demonstrating advanced JavaScript, modern CSS, semantic HTML, and practical cybersecurity implementation.
 
----
-
-## 🚀 Features
-
-- Customizable password generator (length, uppercase, numbers, symbols)
-- Password strength indicator with professional color feedback
-- Copy-to-clipboard functionality with instant feedback
-- **Fully responsive design:** mobile-first, adapts to all devices
-- Accessibility best practices (semantic HTML, ARIA, keyboard navigation)
-- Light/Dark mode toggle
-- Modern, professional UI/UX
-- Modular codebase (CSS/JS by feature)
-- Ready for backend integration (Django REST API)
-- Well-structured for future migration to React
-- **Focus on cybersecurity:** helps users generate strong, unique passwords to protect their accounts
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
+[![JavaScript](https://img.shields.io/badge/JavaScript-ES6+-yellow.svg)](https://www.ecma-international.org/)
+[![CSS3](https://img.shields.io/badge/CSS3-Modern-blue.svg)](https://www.w3.org/Style/CSS/)
+[![Security](https://img.shields.io/badge/Security-AES--GCM-green.svg)](https://www.w3.org/TR/WebCryptoAPI/)
 
 ---
 
-## 📁 Project Structure
+## 📋 Project Overview
+
+**PassFort** is a complete, production-ready password management system built entirely with vanilla JavaScript, showcasing advanced frontend development skills and practical cybersecurity knowledge. This project demonstrates:
+
+- ✅ **Advanced JavaScript:** ES6+ modules, async/await, Web Crypto API, IndexedDB
+- ✅ **Modern CSS:** CSS Variables, Flexbox/Grid, responsive design, animations
+- ✅ **Semantic HTML5:** Accessibility (ARIA), semantic structure, SEO-friendly
+- ✅ **Cybersecurity:** AES-GCM encryption, SHA-256 hashing, entropy analysis, pattern detection
+- ✅ **Professional Architecture:** Modular code, separation of concerns, scalable structure
+
+---
+
+## 🎯 Key Features
+
+### 🔐 **1. Password Generator**
+- **Cryptographically secure** random generation using `window.crypto.getRandomValues()`
+- Customizable length (5-30 characters) and character sets (uppercase, numbers, symbols)
+- **Real-time strength analysis** with entropy calculation (bits)
+- Pattern detection (sequential numbers, repeated chars, common words, keyboard patterns)
+- Visual strength meter with detailed feedback
+- Show/hide password toggle for security
+- One-click copy to clipboard with visual feedback
+
+### 🗂️ **2. Password Manager (CRUD Operations)**
+- **AES-GCM 256-bit encryption** for all stored passwords
+- PIN-based authentication with SHA-256 key derivation
+- Secure local storage using **IndexedDB** (browser-native database)
+- Create, Read, Update, Delete operations for password entries
+- Metadata tracking (site, username, notes, timestamps)
+- Export to CSV with encrypted data decryption
+- XSS protection with HTML escaping
+
+### 🌓 **3. Modern UI/UX**
+- **Fully responsive** design (mobile-first approach)
+- Light/Dark theme toggle with localStorage persistence
+- Smooth animations and transitions
+- Professional color scheme with visual hierarchy
+- Accessible design (ARIA labels, semantic HTML, keyboard navigation)
+- Custom background images with overlay effects
+
+---
+
+## 🛠️ Technologies & Skills Demonstrated
+
+### **Frontend Core**
+| Technology | Implementation |
+|------------|----------------|
+| **JavaScript ES6+** | Modules, async/await, destructuring, arrow functions, template literals |
+| **HTML5** | Semantic elements, ARIA attributes, form validation, accessibility |
+| **CSS3** | Variables, Grid/Flexbox, animations, media queries, responsive design |
+
+### **Advanced JavaScript**
+| Feature | Usage |
+|---------|-------|
+| **Web Crypto API** | AES-GCM encryption, SHA-256 hashing, CSPRNG |
+| **IndexedDB** | Local database for encrypted password storage |
+| **ES6 Modules** | `import/export` for modular architecture |
+| **Async Programming** | Promises, async/await for encryption operations |
+| **DOM Manipulation** | Dynamic UI updates, event handling |
+
+### **Cybersecurity Implementation**
+| Security Feature | Details |
+|------------------|---------|
+| **Encryption** | AES-GCM 256-bit (Web Crypto API standard) |
+| **Key Derivation** | SHA-256 hash from user PIN |
+| **Random Generation** | `crypto.getRandomValues()` (CSPRNG) |
+| **Entropy Analysis** | Mathematical calculation of password strength |
+| **Pattern Detection** | Regex-based detection of weak patterns |
+| **XSS Protection** | HTML escaping for user inputs |
+| **Local-First** | No server transmission, all data stays in browser |
+
+---
+
+## 📁 Project Architect
 
 ```
 passfort/
