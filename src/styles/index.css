@@ -26,6 +26,8 @@ main {
     min-height: 100vh;
     padding: 0 0.5em;
     box-sizing: border-box;
+    margin-top: 0;
+    padding-top: 0;
 }
 
 /* =========================
@@ -42,6 +44,7 @@ main {
     padding: 14px 8px;
     width: 100vw;
     box-sizing: border-box;
+    margin-top: 0;
 }
 
 .container ul {
@@ -140,7 +143,10 @@ a:hover {
     backdrop-filter: blur(4px);
     border-bottom: 1px solid rgba(0,0,0,0.25);
     width: 100%;
+    margin: 0;
+    padding: 0;
 }
+
 .header-inner {
     max-width: 100vw;
     margin: 0 auto;
@@ -253,6 +259,32 @@ html[data-theme="light"] .main-nav button#themeToggle {
 }
 html[data-theme="light"] .main-nav button#themeToggle::before {
     content: "☀";
+}
+
+/* =========================
+   Index Page Styles
+   ========================= */
+
+/* Main Content */
+main {
+    margin-top: 0;
+    padding-top: 0;
+}
+
+.container {
+    margin-top: 0;
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    margin: 2em 0 1em 0;
+    color: var(--text-muted);
+    font-size: 0.98em;
+}
+
+footer p {
+    margin: 0;
 }
 
 /* =========================

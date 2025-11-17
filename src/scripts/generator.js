@@ -1,5 +1,15 @@
+/**
+ * Password Generator Script
+ * Generates secure passwords with customizable options and strength analysis
+ */
+
 // =========================
-// Config: Colors & Texts (for i18n and customization)
+// Imports
+// =========================
+import { analyzePasswordStrength } from './crypto-utils.js';
+
+// =========================
+// Configuration
 // =========================
 const CONFIG = {
 	// Security levels for password strength indicator
@@ -22,16 +32,17 @@ const CONFIG = {
 };
 
 // =========================
-// Password Generation Logic
+// Password Generation
 // =========================
 
 /**
- * Generates a random password based on the selected options.
- * @param {number} length - Desired password length.
- * @param {boolean} uppercase - Include uppercase letters.
- * @param {boolean} numbers - Include numbers.
- * @param {boolean} symbols - Include symbols.
- * @returns {string} Generated password.
+ * Generates a random password based on the selected options
+ * Uses crypto.getRandomValues for cryptographic security
+ * @param {number} length - Desired password length
+ * @param {boolean} uppercase - Include uppercase letters
+ * @param {boolean} numbers - Include numbers
+ * @param {boolean} symbols - Include symbols
+ * @returns {string} Generated password
  */
 function generatePassword(length, uppercase, numbers, symbols) {
 	let chars = 'abcdefghijklmnopqrstuvwxyz';
@@ -39,17 +50,26 @@ function generatePassword(length, uppercase, numbers, symbols) {
 	if (numbers) chars += '0123456789';
 	if (symbols) chars += '!@#$%^&*()-_=+[]{}|;:,.<>?/';
 	if (!chars) return '';
+	
+	// Use crypto.getRandomValues for cryptographic security
+	const array = new Uint32Array(length);
+	window.crypto.getRandomValues(array);
+	
 	let password = '';
 	for (let i = 0; i < length; i++) {
-		// Pick a random character from the allowed set
-		password += chars.charAt(Math.floor(Math.random() * chars.length));
+		password += chars.charAt(array[i] % chars.length);
 	}
 	return password;
 }
 
 /**
- * Calculates password strength based on length and selected options.
- * Returns a value from 0 (weak) to 4 (very strong).
+ * Calculates password strength based on length and selected options
+ * Returns a value from 0 (weak) to 4 (very strong)
+ * @param {number} length - Password length
+ * @param {boolean} uppercase - Has uppercase letters
+ * @param {boolean} numbers - Has numbers
+ * @param {boolean} symbols - Has symbols
+ * @returns {number} Strength score (0-4)
  */
 function getPasswordStrength(length, uppercase, numbers, symbols) {
 	let score = 0;
@@ -66,9 +86,9 @@ function getPasswordStrength(length, uppercase, numbers, symbols) {
 // =========================
 
 /**
- * Returns the security config for a given password length.
- * Used to determine the color and label for the strength indicator.
- * @param {number} length
+ * Returns the security config for a given password length
+ * Used to determine the color and label for the strength indicator
+ * @param {number} length - Password length
  * @returns {object} Security config (bg, color, text)
  */
 function getSecurityConfig(length) {
@@ -82,9 +102,9 @@ function getSecurityConfig(length) {
 }
 
 /**
- * Creates and returns a styled span for the generated password.
- * @param {string} password
- * @returns {HTMLElement}
+ * Creates and returns a styled span for the generated password
+ * @param {string} password - Password text
+ * @returns {HTMLElement} Password span element
  */
 function createPasswordSpan(password) {
 	const span = document.createElement('span');
@@ -94,10 +114,10 @@ function createPasswordSpan(password) {
 }
 
 /**
- * Creates and returns a copy-to-clipboard button.
- * The button provides feedback when the password is copied.
- * @param {string} password
- * @returns {HTMLElement}
+ * Creates and returns a copy-to-clipboard button
+ * The button provides feedback when the password is copied
+ * @param {string} password - Password to copy
+ * @returns {HTMLElement} Copy button element
  */
 function createCopyButton(password) {
 	const btn = document.createElement('button');
@@ -105,6 +125,7 @@ function createCopyButton(password) {
 	btn.className = 'password-emoji';
 	btn.innerHTML = CONFIG.copy.initial;
 	btn.title = CONFIG.copy.initial;
+	
 	// Inline styles for button appearance
 	btn.style.marginLeft = '8px';
 	btn.style.fontSize = '0.85em';
@@ -131,33 +152,55 @@ function createCopyButton(password) {
 }
 
 /**
- * Updates the password strength meter UI.
- * @param {number} strength - Strength value from 0 to 4.
+ * Updates the password strength meter UI with advanced analysis
+ * @param {string} password - The password to analyze
  */
-function updateStrengthMeter(strength) {
+function updateStrengthMeter(password) {
+	const analysis = analyzePasswordStrength(password);
+	
 	const meter = document.getElementById('strength-meter');
 	const label = document.getElementById('strength-label');
-	const levels = [
-		{ text: "Very Weak", color: "#ff4d4f" },
-		{ text: "Weak", color: "#ffb300" },
-		{ text: "Medium", color: "#ffe066" },
-		{ text: "Strong", color: "#00b894" },
-		{ text: "Very Strong", color: "#00adb5" }
-	];
-	meter.value = strength;
-	meter.max = 4;
-	meter.style.setProperty('--strength-color', levels[strength].color);
-	label.textContent = levels[strength].text;
-	label.style.color = levels[strength].color;
+	const feedbackDiv = document.getElementById('strength-feedback');
+	
+	if (meter) {
+		meter.value = analysis.score;
+		meter.style.setProperty('--strength-color', analysis.color);
+	}
+	
+	if (label) {
+		label.textContent = analysis.level;
+		label.style.color = analysis.color;
+	}
+	
+	if (feedbackDiv) {
+		feedbackDiv.innerHTML = `
+			<div style="margin-top: 1em; padding: 1em; background: rgba(0,0,0,0.1); border-radius: 8px; text-align: left;">
+				<h3 style="margin: 0 0 0.5em 0; font-size: 1em;">Security Analysis:</h3>
+				<ul style="margin: 0; padding-left: 1.5em; font-size: 0.9em;">
+					<li>Entropy: ${analysis.entropy} bits</li>
+					<li>Length: ${analysis.length} characters</li>
+					${analysis.feedback.map(f => `<li>${f}</li>`).join('')}
+				</ul>
+				${analysis.patterns.length > 0 ? `
+					<div style="margin-top: 0.8em; padding: 0.5em; background: rgba(255,77,79,0.1); border-left: 3px solid #ff4d4f; border-radius: 4px;">
+						<strong>⚠️ Patterns detected:</strong>
+						<ul style="margin: 0.3em 0 0 0; padding-left: 1.5em; font-size: 0.85em;">
+							${analysis.patterns.map(p => `<li>${p}</li>`).join('')}
+						</ul>
+					</div>
+				` : ''}
+			</div>
+		`;
+	}
 }
 
 /**
- * Updates the security level UI (color, text) and returns the config.
- * Changes the background and text color of the length indicator,
- * and updates the security level label.
- * @param {number} length
- * @param {HTMLElement} output
- * @param {HTMLElement} security
+ * Updates the security level UI (color, text) and returns the config
+ * Changes the background and text color of the length indicator
+ * @param {number} length - Password length
+ * @param {HTMLElement} output - Length value element
+ * @param {HTMLElement} security - Security label element
+ * @returns {object} Security config
  */
 function updateSecurityUI(length, output, security) {
 	const config = getSecurityConfig(length);
@@ -169,8 +212,8 @@ function updateSecurityUI(length, output, security) {
 }
 
 /**
- * Updates the submit button text after first generation.
- * Changes the button label to "Generate again".
+ * Updates the submit button text after first generation
+ * Changes the button label to "Generate again"
  */
 function updateSubmitButtonText() {
 	const submitBtn = document.querySelector('#passwordForm button[type="submit"]');
@@ -180,12 +223,12 @@ function updateSubmitButtonText() {
 }
 
 // =========================
-// Form Submission Handler
+// Event Handlers
 // =========================
 
 /**
- * Handles the password form submission.
- * Generates a password, updates the UI, and sets up copy functionality.
+ * Handles the password form submission
+ * Generates a password, updates the UI, and sets up copy functionality
  */
 document.getElementById('passwordForm').onsubmit = async function (e) {
 	e.preventDefault();
@@ -250,18 +293,17 @@ document.getElementById('passwordForm').onsubmit = async function (e) {
 	// Update submit button text to "Generate again"
 	updateSubmitButtonText();
 
-	// Update strength meter
-	const strength = getPasswordStrength(length, uppercase, numbers, symbols);
-	updateStrengthMeter(strength);
+	// Update strength meter with advanced analysis
+	updateStrengthMeter(password);
 };
 
 // =========================
-// Range and Security Level UI
+// Initialization
 // =========================
 
 /**
- * Handles the range input for password length.
- * Updates the length value display and security level indicator.
+ * Handles the range input for password length
+ * Updates the length value display and security level indicator
  */
 document.addEventListener('DOMContentLoaded', function () {
 	const range = document.getElementById('length');
@@ -277,13 +319,15 @@ document.addEventListener('DOMContentLoaded', function () {
 		output.textContent = range.value;
 		// Do not show security indicator until password is generated
 		if (security) security.innerText = '';
-		const strength = getPasswordStrength(
+		
+		// Generate a sample password to show strength preview
+		const samplePassword = generatePassword(
 			parseInt(range.value, 10),
 			uppercase.checked,
 			numbers.checked,
 			symbols.checked
 		);
-		updateStrengthMeter(strength);
+		updateStrengthMeter(samplePassword);
 	}
 
 	range.addEventListener('input', handleRangeInput);
@@ -293,8 +337,9 @@ document.addEventListener('DOMContentLoaded', function () {
 	handleRangeInput();
 });
 
-
-// To improve:
+// =========================
+// Notes for Future Improvements
+// =========================
 // 1. The selector for 'form#passwordForm > div[style]' in the CSS may be fragile if the inline style changes.
-// 2. The password generator uses Math.random(), which is not cryptographically secure. For higher security, consider using window.crypto.getRandomValues for password generation.
+// 2. Consider migrating inline styles to CSS classes for better maintainability.
 

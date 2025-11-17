@@ -3,52 +3,57 @@
 <head>
     <meta charset="UTF-8">
     <title>PassFort - Home</title>
-    <!-- Main styles for layout and theme -->
-    <link rel="stylesheet" href="../src/styles/index.css">
+    <!-- Styles -->
     <link rel="stylesheet" href="../src/styles/variables.css">
-    <!-- Light/Dark mode toggle script -->
+    <link rel="stylesheet" href="../src/styles/index.css">
+    <!-- Scripts -->
     <script src="../src/scripts/light-dark-mode.js" defer></script>
 </head>
 <body class="background-main">
-    <!-- Header: Logo and Navigation -->
-    <header class="site-header" role="banner">
-        <div class="header-inner">
-            <div class="logo">PassFort</div>
-            <nav class="main-nav" role="navigation" aria-label="Main navigation">
-                <!-- Navigation links -->
-                <a href="index.html">Home</a>
-                <a href="#about">About Us</a>
-                <a href="#learn-more">Learn More</a>
-                <!-- Theme toggle button -->
-                <button id="themeToggle" type="button" 
-                aria-pressed="false">Light</button>
-            </nav>
-        </div>
-    </header>
+    <!-- Root container for React migration compatibility -->
+    <div id="root">
+        <!-- Header: Logo and Navigation -->
+        <header class="site-header" role="banner">
+            <div class="header-inner">
+                <div class="logo">PassFort</div>
+                <nav class="main-nav" role="navigation" aria-label="Main navigation">
+                    <!-- Navigation links -->
+                    <a href="index.html">Home</a>
+                    <a href="#about">About PassFort</a>
+                    <a href="#learn-more">Learn More</a>
+                    <!-- Theme toggle button -->
+                    <button id="themeToggle" type="button" aria-pressed="false">Light</button>
+                </nav>
+            </div>
+        </header>
 
-    <main>
-        <div class="container">
-            <!-- Main welcome message -->
-            <h1>Welcome to PassFort</h1>
-            <p>
-                <!-- Project description -->
-                PassFort is your all-in-one platform for digital security.
-                 Easily generate strong, customizable passwords, 
-                 manage your credentials, and explore advanced tools 
-                 designed to keep your accounts safe. Whether you need 
-                 a quick password, something easy to remember, or full 
-                 control over password options, PassFort has you covered.
-            </p>
-            <h2>Available Services:</h2>
-            <!-- List of main services -->
-            <ul>
-                <li><a href="generator.html">Custom Password Generator</a></li>
-                <li><a href="password-manager.html">Password Manager</a></li>
-                <li><a href="quick.html">Quick password</a></li>
-                <li><a href="easy.html">Easy-to-remember</a></li>
-            </ul>
-        </div>
-    </main>
-    <!-- Footer could be added here in the future -->
+        <!-- Main Content -->
+        <main>
+            <div class="container">
+                <!-- Welcome Section -->
+                <h1>Welcome to PassFort</h1>
+                <p>
+                    PassFort is your all-in-one platform for digital security.
+                    Easily generate strong, customizable passwords, 
+                    manage your credentials, and explore advanced tools 
+                    designed to keep your accounts safe. Whether you need 
+                    a quick password, something easy to remember, or full 
+                    control over password options, PassFort has you covered.
+                </p>
+                
+                <!-- Services Section -->
+                <h2>Available Services:</h2>
+                <ul>
+                    <li><a href="generator.html">🔐 Custom Password Generator</a></li>
+                    <li><a href="password-manager.html">🗂️ Password Manager</a></li>
+                </ul>
+            </div>
+        </main>
+        
+        <!-- Footer -->
+        <footer>
+            <p>&copy; 2025 PassFort. All rights reserved.</p>
+        </footer>
+    </div>
 </body>
 </html>

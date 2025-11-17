@@ -3,21 +3,33 @@
 <head>
     <meta charset="UTF-8">
     <title>PassFort - Password Generator</title>
-    <link rel="stylesheet" href="../src/styles/generator.css">
+    <!-- Styles -->
     <link rel="stylesheet" href="../src/styles/variables.css">
-    <script src="../src/scripts/generator.js" defer></script>
+    <link rel="stylesheet" href="../src/styles/generator.css">
+    <!-- Scripts: type="module" required for ES6 imports -->
+    <script type="module" src="../src/scripts/generator.js" defer></script>
 </head>
 <body>
-    <!-- For React migration: wrap content in a root div -->
+    <!-- Root container for React migration compatibility -->
     <div id="root">
+        <!-- Navigation -->
         <a href="index.html" class="back-btn">← Back to Home</a>
+        
+        <!-- Main Content -->
         <main>
             <div class="container">
+                <!-- Page Title -->
                 <h1>PassFort</h1>
+                
+                <!-- Password Generator Form -->
                 <form id="passwordForm">
                     <h2>Custom Password Generator</h2>
+                    
+                    <!-- Length Control -->
                     <label for="length">Length: <span id="lengthValue">12</span></label>
                     <input type="range" id="length" name="length" min="5" max="30" value="12" required>
+                    
+                    <!-- Options Checkboxes -->
                     <div class="options">
                         <input type="checkbox" id="mayusculas" checked>
                         <label for="mayusculas">Uppercase</label>
@@ -26,21 +38,29 @@
                         <input type="checkbox" id="simbolos" checked>
                         <label for="simbolos">Symbols</label>
                     </div>
-                    <!-- Password strength meter -->
+                    
+                    <!-- Password Strength Meter -->
                     <div style="margin: 1em 0;">
                         <meter id="strength-meter" value="0" min="0" max="4" style="width:100%;height:1.2em;--strength-color:#ff4d4f;"></meter>
                         <div id="strength-label" style="margin-top:0.3em;font-weight:bold;text-align:center;font-size:1em;color:#ff4d4f;">Very Weak</div>
+                        <div id="strength-feedback"></div>
                     </div>
+                    
+                    <!-- Submit Button -->
                     <button type="submit">Create password</button>
                 </form>
+                
+                <!-- Result Section -->
                 <div id="resultado" class="password-result">
                     <span id="generatedPassword"></span>
                     <div id="seguridad"></div>
                 </div>
             </div>
         </main>
-        <footer style="text-align:center; margin: 2em 0 1em 0; color: #b6c2e1; font-size: 0.98em;">
-            &copy; 2025 PassFort. All rights reserved.
+        
+        <!-- Footer -->
+        <footer>
+            <p>&copy; 2025 PassFort. All rights reserved.</p>
         </footer>
     </div>
 </body>

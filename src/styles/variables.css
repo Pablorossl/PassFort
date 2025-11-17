@@ -1,35 +1,86 @@
 /* =========================
-   1. Variables and Themes
+   CSS Variables and Themes
    ========================= */
+
+/* Dark Theme (Default) */
 :root {
+    /* Background colors */
     --bg-start: #232526;
     --bg-end: #414345;
     --panel-bg: rgba(34, 40, 49, 0.95);
+    
+    /* Accent colors */
     --accent: #00adb5;
     --accent-hover: #008891;
     --accent-contrast: #ffffff;
-    --muted: #cfd8dc;
+    --accent-light: #7ecbff;
+    --accent-success: #73d13d;
+    --accent-success-hover: #52c41a;
+    
+    /* Text and UI colors */
+    --text-color: #f4f4f4;
+    --text-muted: #b6c2e1;
+    --text-muted-dark: #cfd8dc;
+    --text-primary: #232946;
+    
+    /* Background overlays */
+    --overlay-dark: rgba(0, 0, 0, 0.15);
+    --overlay-input: rgba(255, 255, 255, 0.05);
+    
+    /* Border colors */
+    --border-primary: #7ecbff;
+    --border-accent: #00adb5;
+    
+    /* Button colors */
+    --btn-primary-bg: #00adb5;
+    --btn-primary-hover: #008891;
+    --btn-secondary-bg: #7ecbff;
+    --btn-secondary-hover: #5bb3f5;
+    --btn-success-bg: #73d13d;
+    --btn-success-hover: #52c41a;
+    
+    /* Shadows and effects */
     --shadow: 0 4px 16px 0 rgba(31, 38, 135, 0.37);
     --outline-accent: rgba(0, 173, 181, 0.18);
-    --text-color: #f4f4f4;
 }
 
+/* Light Theme */
 html[data-theme="light"] {
+    /* Background colors */
     --bg-start: #f4f6f8;
     --bg-end: #e9eef2;
-    --panel-bg: rgba(255,255,255,0.95);
+    --panel-bg: rgba(255, 255, 255, 0.95);
+    
+    /* Accent colors */
     --accent: #008891;
     --accent-hover: #007270;
     --accent-contrast: #ffffff;
-    --muted: #6b7880;
-    --shadow: 0 6px 20px rgba(16,24,40,0.06);
-    --outline-accent: rgba(0, 136, 137, 0.12);
+    
+    /* Text and UI colors */
     --text-color: #1f2a30;
+    --text-muted: #6b7880;
+    
+    /* Shadows and effects */
+    --shadow: 0 6px 20px rgba(16, 24, 40, 0.06);
+    --outline-accent: rgba(0, 136, 137, 0.12);
 }
 
-/* Add a root class for easy React migration */
-body, #root, .app-root {
+/* =========================
+   Base Layout (React-ready)
+   ========================= */
+body, 
+#root, 
+.app-root {
     min-height: 100vh;
     min-width: 100vw;
     box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+#root {
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+    padding: 0;
 }
