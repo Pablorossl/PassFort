@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="../src/styles/index.css">
     <!-- Scripts -->
     <script src="../src/scripts/light-dark-mode.js" defer></script>
+    <script src="../src/scripts/scroll-reveal.js" defer></script>
 </head>
 <body class="background-main">
     <!-- Root container for React migration compatibility -->
@@ -29,25 +30,133 @@
 
         <!-- Main Content -->
         <main>
-            <div class="container">
-                <!-- Welcome Section -->
-                <h1>Welcome to PassFort</h1>
-                <p>
-                    PassFort is your all-in-one platform for digital security.
-                    Easily generate strong, customizable passwords, 
-                    manage your credentials, and explore advanced tools 
-                    designed to keep your accounts safe. Whether you need 
-                    a quick password, something easy to remember, or full 
-                    control over password options, PassFort has you covered.
+            <!-- Hero / Welcome -->
+            <section class="container hero reveal" id="hero" aria-labelledby="hero-title">
+                <h1 id="hero-title">Welcome to PassFort</h1>
+                <p class="lead">
+                    Your private, offline-first security toolkit. Generate high-entropy passwords, store them encrypted locally, and learn modern defensive practices – all without sending data to external servers.
                 </p>
-                
-                <!-- Services Section -->
-                <h2>Available Services:</h2>
-                <ul>
-                    <li><a href="generator.html">🔐 Custom Password Generator</a></li>
-                    <li><a href="password-manager.html">🗂️ Password Manager</a></li>
-                </ul>
-            </div>
+                <div class="cta-row">
+                    <a class="cta-btn" href="generator.html">Generate Passwords</a>
+                    <a class="cta-btn secondary" href="password-manager.html">Open Manager</a>
+                </div>
+            </section>
+
+            <!-- About Section -->
+            <section class="info-section reveal" id="about" aria-labelledby="about-title">
+                <div class="section-inner">
+                    <h2 id="about-title">About PassFort</h2>
+                    <div class="text-grid">
+                        <div class="text-block">
+                            <h3>Philosophy</h3>
+                            <p>PassFort embraces a <strong>zero-trust, client-side</strong> approach: all sensitive operations occur locally via the Web Crypto API and IndexedDB. No credentials are transmitted – reducing attack surface drastically.</p>
+                        </div>
+                        <div class="text-block">
+                            <h3>Core Features</h3>
+                            <ul class="feature-list">
+                                <li>🔐 AES-GCM local encryption</li>
+                                <li>🧪 Entropy & pattern analysis</li>
+                                <li>🗂 Offline password vault</li>
+                                <li>⚡ Cryptographically secure RNG</li>
+                                <li>🌗 Adaptive light/dark theming</li>
+                            </ul>
+                        </div>
+                        <div class="text-block">
+                            <h3>Design Principles</h3>
+                            <p>We prioritize minimal data retention, progressive enhancement, semantic HTML, and accessible UI patterns (focus states, proper landmark roles, ARIA labels).</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Cybersecurity Guidance -->
+            <section class="info-section alt reveal" id="learn-more" aria-labelledby="security-title">
+                <div class="section-inner">
+                    <h2 id="security-title">Cybersecurity Essentials</h2>
+                    <div class="card-grid">
+                        <article class="card" aria-labelledby="pw-hygiene-title">
+                            <h3 id="pw-hygiene-title">Password Hygiene</h3>
+                            <ul>
+                                <li>Use unique passwords per account</li>
+                                <li>Prefer 14+ characters, high entropy</li>
+                                <li>Avoid patterns (1234, qwerty, dates)</li>
+                                <li>Rotate compromised credentials quickly</li>
+                            </ul>
+                        </article>
+                        <article class="card" aria-labelledby="threat-model-title">
+                            <h3 id="threat-model-title">Threat Modeling</h3>
+                            <ul>
+                                <li>Assume device loss – use PIN & encryption</li>
+                                <li>Reduce attack surface (no server sync)</li>
+                                <li>Mitigate shoulder surfing (mask toggle)</li>
+                                <li>Clipboard hygiene (copy only when needed)</li>
+                            </ul>
+                        </article>
+                        <article class="card" aria-labelledby="browser-security-title">
+                            <h3 id="browser-security-title">Browser Security</h3>
+                            <ul>
+                                <li>Keep browser up to date (patch cycle)</li>
+                                <li>Limit invasive extensions</li>
+                                <li>Use strict site permissions</li>
+                                <li>Clear sensitive sessions regularly</li>
+                            </ul>
+                        </article>
+                        <article class="card" aria-labelledby="responsible-use-title">
+                            <h3 id="responsible-use-title">Responsible Use</h3>
+                            <ul>
+                                <li>Never reuse master PIN</li>
+                                <li>Prefer hardware-encrypted disks</li>
+                                <li>Lock your OS when AFK</li>
+                                <li>Enable 2FA everywhere possible</li>
+                            </ul>
+                        </article>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Architecture Section -->
+            <section class="info-section reveal" id="architecture" aria-labelledby="arch-title">
+                <div class="section-inner">
+                    <h2 id="arch-title">Architecture Snapshot</h2>
+                    <div class="arch-grid">
+                        <div class="arch-block">
+                            <h3>Storage Layer</h3>
+                            <p>Passwords stored in IndexedDB; each entry encrypted with per-PIN derived key (PBKDF2 / subtle crypto). No plain text persists.</p>
+                        </div>
+                        <div class="arch-block">
+                            <h3>Crypto Layer</h3>
+                            <p>Randomness sourced from <code>crypto.getRandomValues</code>; AES-GCM ensures confidentiality & integrity (nonce + auth tag).</p>
+                        </div>
+                        <div class="arch-block">
+                            <h3>Privacy Model</h3>
+                            <p>Offline-first: no network calls for generation or decryption; export actions require explicit user consent.</p>
+                        </div>
+                        <div class="arch-block">
+                            <h3>Extensibility</h3>
+                            <p>Future modules can add breach-check APIs (opt-in) or hardware token integration while preserving core isolation.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Services Section (Refactored Grid) -->
+            <section class="services-section reveal" aria-labelledby="services-title">
+                <div class="section-inner">
+                    <h2 id="services-title">Available Services</h2>
+                    <div class="services-grid">
+                        <a class="service-card" href="generator.html" aria-label="Go to custom password generator">
+                            <div class="icon">🔐</div>
+                            <h3>Password Generator</h3>
+                            <p>Create high-entropy, customizable passwords with live strength analysis.</p>
+                        </a>
+                        <a class="service-card" href="password-manager.html" aria-label="Go to password manager">
+                            <div class="icon">🗂️</div>
+                            <h3>Password Manager</h3>
+                            <p>Store and organize credentials securely with local encryption.</p>
+                        </a>
+                    </div>
+                </div>
+            </section>
         </main>
         
         <!-- Footer -->
