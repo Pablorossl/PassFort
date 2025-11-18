@@ -113,43 +113,7 @@ function createPasswordSpan(password) {
 	return span;
 }
 
-/**
- * Creates and returns a copy-to-clipboard button
- * The button provides feedback when the password is copied
- * @param {string} password - Password to copy
- * @returns {HTMLElement} Copy button element
- */
-function createCopyButton(password) {
-	const btn = document.createElement('button');
-	btn.type = 'button';
-	btn.className = 'password-emoji';
-	btn.innerHTML = CONFIG.copy.initial;
-	btn.title = CONFIG.copy.initial;
-	
-	// Inline styles for button appearance
-	btn.style.marginLeft = '8px';
-	btn.style.fontSize = '0.85em';
-	btn.style.padding = '1px 8px';
-	btn.style.borderRadius = '4px';
-	btn.style.border = '1px solid #d1d5db';
-	btn.style.background = '#f8fafc';
-	btn.style.cursor = 'pointer';
-	btn.style.transition = 'background 0.2s, transform 0.2s';
 
-	// Copy password to clipboard and show feedback
-	btn.onclick = function () {
-		navigator.clipboard.writeText(password);
-		btn.innerHTML = CONFIG.copy.success;
-		btn.style.background = '#d1ffd6';
-		btn.style.transform = 'scale(1.08)';
-		setTimeout(() => {
-			btn.innerHTML = CONFIG.copy.initial;
-			btn.style.background = '#f8fafc';
-			btn.style.transform = 'scale(1)';
-		}, 1200);
-	};
-	return btn;
-}
 
 /**
  * Updates the password strength meter UI with advanced analysis
@@ -243,35 +207,57 @@ document.getElementById('passwordForm').onsubmit = async function (e) {
 	const resultado = document.getElementById('resultado');
 	resultado.innerHTML = '';
 
+	// Create password container with integrated controls
+	const passwordContainer = document.createElement('div');
+	passwordContainer.className = 'password-container';
+
 	// Add generated password span to the result area (hidden by default)
 	const passwordSpan = createPasswordSpan('*'.repeat(password.length));
-	resultado.appendChild(passwordSpan);
+	passwordContainer.appendChild(passwordSpan);
+
+	// Create button controls container
+	const btnContainer = document.createElement('div');
+	btnContainer.className = 'password-controls';
 
 	// Add show/hide password toggle
 	const toggleBtn = document.createElement('button');
 	toggleBtn.type = 'button';
-	toggleBtn.textContent = '👁 Show';
-	toggleBtn.style.marginLeft = '8px';
-	toggleBtn.style.fontSize = '0.85em';
-	toggleBtn.style.padding = '1px 8px';
-	toggleBtn.style.borderRadius = '4px';
-	toggleBtn.style.border = '1px solid #d1d5db';
-	toggleBtn.style.background = '#f8fafc';
-	toggleBtn.style.cursor = 'pointer';
-	toggleBtn.style.transition = 'background 0.2s, transform 0.2s';
+	toggleBtn.className = 'icon-btn';
+	toggleBtn.innerHTML = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>';
+	toggleBtn.title = 'Show password';
 
 	let isVisible = false;
 	toggleBtn.onclick = function () {
 		isVisible = !isVisible;
 		passwordSpan.textContent = isVisible ? password : '*'.repeat(password.length);
-		toggleBtn.textContent = isVisible ? '🙈 Hide' : '👁 Show';
+		toggleBtn.innerHTML = isVisible 
+			? '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"></path><line x1="1" y1="1" x2="23" y2="23"></line></svg>'
+			: '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>';
+		toggleBtn.title = isVisible ? 'Hide password' : 'Show password';
 	};
 
-	resultado.appendChild(toggleBtn);
+	btnContainer.appendChild(toggleBtn);
 
-	// Add copy-to-clipboard button to the result area
-	const copyBtn = createCopyButton(password);
-	resultado.appendChild(copyBtn);
+	// Add copy-to-clipboard button
+	const copyBtn = document.createElement('button');
+	copyBtn.type = 'button';
+	copyBtn.className = 'icon-btn';
+	copyBtn.innerHTML = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>';
+	copyBtn.title = 'Copy to clipboard';
+
+	copyBtn.onclick = function () {
+		navigator.clipboard.writeText(password);
+		copyBtn.innerHTML = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>';
+		copyBtn.classList.add('copied');
+		setTimeout(() => {
+			copyBtn.innerHTML = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>';
+			copyBtn.classList.remove('copied');
+		}, 2000);
+	};
+
+	btnContainer.appendChild(copyBtn);
+	passwordContainer.appendChild(btnContainer);
+	resultado.appendChild(passwordContainer);
 
 	// Show security indicator after generating password
 	let security = document.getElementById('seguridad');

@@ -242,18 +242,75 @@ button:hover {
 #seguridad:empty {
     opacity: 0;
 }
+
+/* Password container with controls */
+.password-container {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 4px;
+    background: rgba(0, 0, 0, 0.1);
+    border-radius: 12px;
+    margin: 0 auto;
+}
+
+.password-controls {
+    display: flex;
+    gap: 4px;
+    align-items: center;
+}
+
+.icon-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    padding: 0;
+    background: rgba(126, 203, 255, 0.1);
+    border: 1px solid rgba(126, 203, 255, 0.3);
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    color: #7ecbff;
+    margin: 0;
+}
+
+.icon-btn:hover {
+    background: rgba(126, 203, 255, 0.2);
+    border-color: #7ecbff;
+    transform: translateY(-1px);
+    box-shadow: 0 2px 8px rgba(0, 173, 181, 0.2);
+}
+
+.icon-btn:active {
+    transform: translateY(0);
+    box-shadow: 0 1px 4px rgba(0, 173, 181, 0.15);
+}
+
+.icon-btn.copied {
+    background: rgba(0, 173, 181, 0.2);
+    border-color: #00adb5;
+    color: #00adb5;
+}
+
+.icon-btn svg {
+    display: block;
+    width: 16px;
+    height: 16px;
+}
 .generated-password {
     display: inline-block;
     font-family: 'JetBrains Mono', 'Fira Mono', 'Consolas', monospace;
     font-size: 1em;
     font-weight: 700;
     letter-spacing: 0.09em;
-    color: #1e2a3a;
+    color: #fffffe;
     background: linear-gradient(90deg, rgba(126,203,255,0.16) 0%, rgba(0,173,181,0.13) 100%);
     border: 2px solid #7ecbff;
     border-radius: 10px;
-    padding: 0.28em 0.85em;
-    margin: 0 0.3em;
+    padding: 0.5em 1em;
+    margin: 0;
     box-shadow: 0 4px 18px 0 rgba(0,173,181,0.13), 0 2px 8px #00adb522;
     transition: background 0.25s, color 0.25s, box-shadow 0.25s, border 0.25s;
     user-select: all;
@@ -262,6 +319,7 @@ button:hover {
     outline: none;
     position: relative;
     z-index: 1;
+    min-width: 200px;
 }
 .generated-password:active,
 .generated-password:focus {
@@ -470,6 +528,19 @@ meter#strength-meter {
         margin-top: 1.2em;
         font-size: 1.15em;
         width: 100%;
+    }
+    .password-container {
+        flex-direction: column;
+        gap: 12px;
+        width: 100%;
+        padding: 8px;
+    }
+    .generated-password {
+        width: 100%;
+        box-sizing: border-box;
+    }
+    .password-controls {
+        justify-content: center;
     }
     #seguridad {
         font-size: 1.15em;
